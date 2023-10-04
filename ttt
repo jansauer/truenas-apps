@@ -1,0 +1,4 @@
+/usr/local/bin/catalog_validate validate --path /project
+
+/usr/local/bin/catalog_update update --path /project
+/usr/local/bin/catalog_update publish --path /project

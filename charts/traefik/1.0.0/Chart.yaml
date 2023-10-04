@@ -3,8 +3,8 @@ type: application
 name: traefik
 description: High Performance, Kubernetes Native Object Storage
 annotations:
-  title: MinIO
-version: 1.7.17
+  title: MYMinIO
+version: 1.0.0
 appVersion: '2023-07-21'
 kubeVersion: '>=1.16.0-0'
 maintainers:
