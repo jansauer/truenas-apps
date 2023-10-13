@@ -335,7 +335,20 @@ NewReplicaSet:   traefik-5bf4fcd46 (1/1 replicas created)
 Events:          <none>
 
 
+pod/traefik-568dc7868f-zqw2f   1/1     Running   0          14h
 
+NAME                      TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/traefik           LoadBalancer   172.17.25.188   192.168.5.5   9000/TCP         16h
+service/traefik-metrics   ClusterIP      172.17.4.242    <none>        9180/TCP         16h
+service/traefik-tcp       LoadBalancer   172.17.221.17   192.168.5.5   80/TCP,443/TCP   16h
+
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/traefik   1/1     1            1           16h
+
+NAME                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/traefik-5d94bc5b99   0         0         0       16h
+replicaset.apps/traefik-568dc7868f   1         1         1       14h
+replicaset.apps/traefik-6977897f8d   0         0         0       14h
 
 
 
