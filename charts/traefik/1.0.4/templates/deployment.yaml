@@ -31,6 +31,7 @@ spec:
             - "--global.checknewversion=false"
             - "--global.sendanonymoususage=true"
             - "--entryPoints.traefik.address=:9000/tcp"
+            - "--api.insecure"
             - "--ping"
             - "--log.level=INFO"
           volumeMounts:
