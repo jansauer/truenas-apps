@@ -22,7 +22,7 @@ spec:
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         release: {{ .Release.Name | quote }}
         heritage: {{ .Release.Service | quote }}
-        version: 1.0.0
+        version: 1.0.1
     spec:
       containers:
         - name: traefik
