@@ -26,15 +26,13 @@ spec:
     spec:
       containers:
         - image: "tutum/hello-world"
+          name: helloworld
           livenessProbe:
             initialDelaySeconds: 60
             tcpSocket:
               port: 80
-          name: helloworld
           readinessProbe:
             httpGet:
               path: /
               port: 80
             initialDelaySeconds: 5
-          securityContext:
-            privileged: fals
