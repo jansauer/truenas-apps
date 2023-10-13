@@ -5,13 +5,13 @@ items:
   - apiVersion: extensions/v1beta1
     kind: Deployment
     metadata:
+      name: traefik
       labels:
         app: {{ template "fullname" . }}
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         release: {{ .Release.Name | quote }}
         heritage: {{ .Release.Service | quote }}
         version: {{ .Chart.Version }}
-      name: helloworld
     spec:
       replicas: 1
       selector:

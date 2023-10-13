@@ -1,5 +1,3 @@
-[MindedeIO](https://min.io) is a High dedededPerformance Object Storage released under Apache License v2.0. It is API compatible with Amazon S3 cloud storage service. Use MinIO to build high performance infrastructure for machine learning, analytics and application data workloads.
+[Traefik](https://traefik.io/) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease.
 
-**NOTE**
-- On installation, minIO data directory's ownership will be updated to minio:minio.
-- For existing installations that are exhibiting the upgrade to >=1.5.0, the minIO data directory's ownership will be migrated to minio:minio.
+**NOTE** this setup 

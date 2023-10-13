@@ -1,20 +1,23 @@
 apiVersion: v2
 type: application
 name: traefik
-description: High Performance, Kubernetes Native Object Storage
-annotations:
-  title: MYMinIO
 version: 1.0.0
-appVersion: '2023-07-21'
+appVersion: "2.10.4"
 kubeVersion: '>=1.16.0-0'
+description: Traefik is a flexible reverse proxy and Ingress Provider.
+home: https://traefik.io/
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/traefik.png
 maintainers:
-  - name: jansauer
-    url: https://www.truenas.com/
-    email: dev@ixsystems.com
-home: https://min.io
-icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+  - name: Jan Sauer
+    url: https://jansauer.de/
+    email: jan@jansauer.de
 sources:
-  - https://github.com/minio/minio
-  - https://github.com/minio/charts
+  - https://github.com/truecharts/charts/tree/master/charts/enterprise/traefik
+  - https://github.com/traefik/traefik
+  - https://github.com/traefik/traefik-helm-chart
+  - https://traefik.io/
+  - https://doc.traefik.io/traefik/
 keywords:
   - jansauer
+  - traefik
+  - ingress
