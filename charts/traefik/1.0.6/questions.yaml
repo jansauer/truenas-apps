@@ -70,3 +70,24 @@ questions:
                   hidden: true
                   $ref:
                     - "normalize/ixVolume"
+
+  - variable: traefikNetwork
+    group: Network Configuration
+    label: ""
+    schema:
+      type: dict
+      attrs:
+        - variable: websecurePort
+          label: Websecure Port
+          description: Ports below 9000 will enable Host Network automatically.
+          schema:
+            type: int
+            default: 6443
+            required: true
+        - variable: webPort
+          label: Web Port
+          description: Ports below 9000 will enable Host Network automatically.
+          schema:
+            type: int
+            default: 6080
+            required: true

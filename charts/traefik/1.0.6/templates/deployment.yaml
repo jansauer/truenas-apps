@@ -22,7 +22,6 @@ spec:
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         release: {{ .Release.Name | quote }}
         heritage: {{ .Release.Service | quote }}
-        version: 1.0.1
     spec:
       containers:
         - name: traefik
@@ -30,6 +29,10 @@ spec:
           args:
             - "--global.checknewversion=false"
             - "--global.sendanonymoususage=true"
+            - "--entryPoints.websecure.address=:4443/tcp"
+            - "--entryPoints.web.address=:8080/tcp"
+            - "--entryPoints.web.http.redirections.entrypoint.scheme=https"
+            - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
             - "--entryPoints.traefik.address=:9000/tcp"
             - "--api.insecure"
             - "--ping"
