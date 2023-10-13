@@ -1,0 +1,72 @@
+groups:
+  - name: Traefik Configuration
+    description: Configure Traefik
+  - name: Storage Configuration
+    description: Configure storage for Traefik
+  - name: Network Configuration
+    description: Configure Network for Traefik
+
+
+portals:
+  open:
+    protocols:
+      - "http"
+    host:
+      - "$node_ip"
+    ports:
+      - "9000"
+    path: "/dashboard"
+
+
+questions:
+
+  - variable: TZ
+    group: Traefik Configuration
+    label: Timezone
+    schema:
+      type: string
+      default: Etc/UTC
+      required: true
+      $ref:
+        - definitions/timezone
+
+  - variable: acmeStorage
+    group: Storage Configuration
+    label: Storage Volume for ACME
+    schema:
+      type: dict
+      attrs:
+        - variable: acme
+          label: ACME
+          schema:
+            type: dict
+            attrs:
+              - variable: type
+                label: Type
+                description: |
+                  ixVolume: Is dataset created automatically by the system.</br>
+                  Host Path: Is a path that already exists on the system.
+                schema:
+                  type: string
+                  default: ixVolume
+                  required: true
+                  enum:
+                    - value: hostPath
+                      description: Host Path (Path that already exists on the system)
+                    - value: ixVolume
+                      description: ixVolume (Dataset created automatically by the system)
+              - variable: hostPath
+                label: Host Path
+                schema:
+                  type: hostpath
+                  show_if: [["type", "=", "hostPath"]]
+                  default: ""
+              - variable: datasetName
+                label: Dataset Name
+                schema:
+                  type: string
+                  default: data
+                  show_if: [["type", "=", "ixVolume"]]
+                  hidden: true
+                  $ref:
+                    - "normalize/ixVolume"
