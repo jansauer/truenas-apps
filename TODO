@@ -1,3 +1,29 @@
 - Get services
 - Persistant storage
-- 
+
+
+
+ Error: Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/middlewared/job.py", line 427, in run
+    await self.future
+  File "/usr/lib/python3/dist-packages/middlewared/job.py", line 465, in __run_body
+    rv = await self.method(*([self] + args))
+  File "/usr/lib/python3/dist-packages/middlewared/schema.py", line 1379, in nf
+    return await func(*args, **kwargs)
+  File "/usr/lib/python3/dist-packages/middlewared/schema.py", line 1247, in nf
+    res = await f(*args, **kwargs)
+  File "/usr/lib/python3/dist-packages/middlewared/plugins/chart_releases_linux/upgrade.py", line 115, in upgrade
+    await self.upgrade_chart_release(job, release, options)
+  File "/usr/lib/python3/dist-packages/middlewared/plugins/chart_releases_linux/upgrade.py", line 298, in upgrade_chart_release
+    await self.middleware.call('chart.release.helm_action', release_name, chart_path, config, 'upgrade')
+  File "/usr/lib/python3/dist-packages/middlewared/main.py", line 1368, in call
+    return await self._call(
+  File "/usr/lib/python3/dist-packages/middlewared/main.py", line 1328, in _call
+    return await self.run_in_executor(prepared_call.executor, methodobj, *prepared_call.args)
+  File "/usr/lib/python3/dist-packages/middlewared/main.py", line 1231, in run_in_executor
+    return await loop.run_in_executor(pool, functools.partial(method, *args, **kwargs))
+  File "/usr/lib/python3.9/concurrent/futures/thread.py", line 52, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/lib/python3/dist-packages/middlewared/plugins/chart_releases_linux/helm.py", line 44, in helm_action
+    raise CallError(f'Failed to {tn_action} chart release: {stderr.decode()}')
+middlewared.service_exception.CallError: [EFAULT] Failed to upgrade chart release: Error: UPGRADE FAILED: cannot patch "traefik" with kind Service: Service "traefik" is invalid: spec.ports[0].nodePort: Invalid value: 6443: provided port is not in the valid range. The range of valid ports is 9000-65535
