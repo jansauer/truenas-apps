@@ -9,10 +9,10 @@ spec:
   ports:
     - name: websecure
       port: {{ .Values.traefikNetwork.websecurePort }}
-      targetPort: websecure
+      targetPort: 9003
     - name: web
       port: {{ .Values.traefikNetwork.webPort }}
-      targetPort: targetPort
+      targetPort: 9002
     - name: traefik
       port: 9000
-      targetPort: traefik
+      targetPort: 9001
