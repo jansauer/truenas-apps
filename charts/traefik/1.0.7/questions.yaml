@@ -82,12 +82,12 @@ questions:
           description: Ports below 9000 will enable Host Network automatically.
           schema:
             type: int
-            default: 6443
+            default: 8443
             required: true
         - variable: webPort
           label: Web Port
           description: Ports below 9000 will enable Host Network automatically.
           schema:
             type: int
-            default: 6080
+            default: 8080
             required: true

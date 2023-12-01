@@ -7,6 +7,12 @@ spec:
   selector:
     app: {{ template "fullname" . }}
   ports:
+    - name: websecure
+      port: 8443
+      nodePort: {{ .Values.traefikNetwork.websecurePort }}
+    - name: websecure
+      port: 8080
+      nodePort: {{ .Values.traefikNetwork.webPort }}
     - name: traefik
       port: 9000
       nodePort: 9001

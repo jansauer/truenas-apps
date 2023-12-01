@@ -29,17 +29,26 @@ spec:
           args:
             - "--global.checknewversion=false"
             - "--global.sendanonymoususage=true"
-            - "--entryPoints.websecure.address=:4443/tcp"
+            - "--entryPoints.websecure.address=:8443/tcp"
             - "--entryPoints.web.address=:8080/tcp"
             - "--entryPoints.web.http.redirections.entrypoint.scheme=https"
             - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
             - "--entryPoints.traefik.address=:9000/tcp"
+            - --providers.kubernetescrd
+            - --providers.kubernetesingress
             - "--api.insecure"
             - "--ping"
             - "--log.level=INFO"
           volumeMounts:
             - name: tmp
               mountPath: /tmp
+          ports:
+            - name: websecure
+              containerPort: 8443
+            - name: web
+              containerPort: 8080
+            - name: traefik
+              containerPort: 9000
           readinessProbe:
             httpGet:
               path: /ping
