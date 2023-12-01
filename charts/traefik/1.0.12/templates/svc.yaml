@@ -15,4 +15,4 @@ spec:
       targetPort: targetPort
     - name: traefik
       port: 9000
-      targetPort: 9001
+      targetPort: traefik
