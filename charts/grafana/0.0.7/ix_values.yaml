@@ -3,7 +3,6 @@ image:
   tag: "11.1.0"
 
 dataHostPath: ""
-
 TZ: "Etc/UTC"
 
 ingressHost: ""

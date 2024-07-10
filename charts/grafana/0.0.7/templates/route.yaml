@@ -12,7 +12,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`grafana.jansauer.dev`)
+    - match: Host(`{{ .Values.ingressHost }}`)
       kind: Rule
       services:
         - name: "{{ .Release.Name }}"
