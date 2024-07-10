@@ -1,20 +1,20 @@
 {
-    "0.0.6": {
+    "0.0.7": {
         "healthy": true,
         "supported": true,
         "healthy_error": null,
-        "location": "/__w/truenas-apps/truenas-apps/charts/grafana/0.0.6",
-        "last_update": "2024-07-10 20:16:23",
+        "location": "/__w/truenas-apps/truenas-apps/charts/grafana/0.0.7",
+        "last_update": "2024-07-10 20:37:25",
         "required_features": [
             "definitions/timezone"
         ],
-        "human_version": "11.1.0_0.0.6",
-        "version": "0.0.6",
+        "human_version": "11.1.0_0.0.7",
+        "version": "0.0.7",
         "chart_metadata": {
             "apiVersion": "v2",
             "type": "application",
             "name": "grafana",
-            "version": "0.0.6",
+            "version": "0.0.7",
             "appVersion": "11.1.0",
             "kubeVersion": ">=1.16.0-0",
             "description": "Grafana is a analytics and monitoring platform.",
@@ -44,15 +44,20 @@
                     "description": "Configure Grafana"
                 },
                 {
-                    "name": "Storage Configuration",
-                    "description": "Configure Storage for Grafana"
-                },
-                {
                     "name": "Ingress Configuration",
                     "description": "Configure Ingress for Grafana"
                 }
             ],
             "questions": [
+                {
+                    "variable": "dataHostPath",
+                    "group": "Main Configuration",
+                    "label": "Data Host Path",
+                    "schema": {
+                        "type": "hostpath",
+                        "required": true
+                    }
+                },
                 {
                     "variable": "TZ",
                     "group": "Main Configuration",
@@ -74,15 +79,6 @@
                                 "description": "'Asia/Saigon' timezone"
                             }
                         ]
-                    }
-                },
-                {
-                    "variable": "dataHostPath",
-                    "group": "Storage Configuration",
-                    "label": "Grafana Data Host Path",
-                    "schema": {
-                        "type": "hostpath",
-                        "required": true
                     }
                 },
                 {
