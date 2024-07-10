@@ -1,6 +1,6 @@
 image:
-  repository: grafana/grafana
-  tag: 11.1.0
+  repository: "grafana/grafana"
+  tag: "11.1.0"
 
 dataHostPath: ""
 
