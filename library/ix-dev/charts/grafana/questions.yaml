@@ -1,12 +1,17 @@
 groups:
   - name: Main Configuration
     description: Configure Grafana
-  - name: Storage Configuration
-    description: Configure Storage for Grafana
   - name: Ingress Configuration
     description: Configure Ingress for Grafana
 
 questions:
+  - variable: dataHostPath
+    group: Main Configuration
+    label: Data Host Path
+    schema:
+      type: hostpath
+      required: true
+
   - variable: TZ
     group: Main Configuration
     label: Timezone
@@ -16,13 +21,6 @@ questions:
       required: true
       $ref:
         - definitions/timezone
-
-  - variable: dataHostPath
-    group: Storage Configuration
-    label: Grafana Data Host Path
-    schema:
-      type: hostpath
-      required: true
 
   - variable: ingressHost
     group: Ingress Configuration
