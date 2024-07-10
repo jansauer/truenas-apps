@@ -1,9 +1,9 @@
 apiVersion: v2
 type: application
 name: grafana
-version: 0.0.4
-appVersion: "3.0.0"
-kubeVersion: '>=1.16.0-0'
+version: 0.0.5
+appVersion: "11.1.0"
+kubeVersion: ">=1.16.0-0"
 description: Grafana is a analytics and monitoring platform.
 home: https://grafana.com/oss/grafana/
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/grafana.webp
@@ -12,11 +12,8 @@ maintainers:
     url: https://jansauer.de/
     email: jan@jansauer.de
 sources:
-  - https://github.com/truecharts/charts/tree/master/charts/enterprise/traefik
-  - https://github.com/traefik/traefik
-  - https://github.com/traefik/traefik-helm-chart
-  - https://traefik.io/
-  - https://doc.traefik.io/traefik/
+  - https://grafana.com/grafana/
+  - https://hub.docker.com/r/grafana/grafana
 keywords:
   - jansauer
   - monitoring

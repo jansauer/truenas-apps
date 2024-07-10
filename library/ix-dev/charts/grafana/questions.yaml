@@ -1,23 +1,14 @@
 groups:
-  - name: Traefik Configuration
-    description: Configure Traefik
+  - name: Main Configuration
+    description: Configure Grafana
   - name: Storage Configuration
     description: Configure Storage for Grafana
-
-portals:
-  open:
-    protocols:
-      - "http"
-    host:
-      - "$node_ip"
-    ports:
-      - "9000"
-    path: "/dashboard"
+  - name: Ingress Configuration
+    description: Configure Ingress for Grafana
 
 questions:
-
   - variable: TZ
-    group: Traefik Configuration
+    group: Main Configuration
     label: Timezone
     schema:
       type: string
@@ -26,14 +17,26 @@ questions:
       $ref:
         - definitions/timezone
 
-  - variable: grafanaStorage
-    group: Storage Configuration
-    label: ""
+  - variable: dataHostPath
+    label: Grafana Data Host Path
+    description: The host path to use for storage.
     schema:
-      type: dict
-      attrs:
-        - variable: dataHostPath
-          label: Host Path
-          schema:
-            type: hostpath
-            required: true
+      type: hostpath
+      required: true
+
+  - variable: ingressHost
+    group: Ingress Configuration
+    label: Ingress Rule Hostname
+    schema:
+      type: string
+      required: true
+
+portals:
+  open:
+    protocols:
+      - "https"
+    host:
+      - "$variable-ingressHost"
+    ports:
+      - "443"
+    path: "/"
