@@ -1,21 +1,21 @@
 {
-    "0.0.4": {
+    "0.0.6": {
         "healthy": true,
         "supported": true,
         "healthy_error": null,
-        "location": "/__w/truenas-apps/truenas-apps/charts/grafana/0.0.4",
-        "last_update": "2024-05-19 11:13:06",
+        "location": "/__w/truenas-apps/truenas-apps/charts/grafana/0.0.6",
+        "last_update": "2024-07-10 20:16:23",
         "required_features": [
             "definitions/timezone"
         ],
-        "human_version": "3.0.0_0.0.4",
-        "version": "0.0.4",
+        "human_version": "11.1.0_0.0.6",
+        "version": "0.0.6",
         "chart_metadata": {
             "apiVersion": "v2",
             "type": "application",
             "name": "grafana",
-            "version": "0.0.4",
-            "appVersion": "3.0.0",
+            "version": "0.0.6",
+            "appVersion": "11.1.0",
             "kubeVersion": ">=1.16.0-0",
             "description": "Grafana is a analytics and monitoring platform.",
             "home": "https://grafana.com/oss/grafana/",
@@ -28,11 +28,8 @@
                 }
             ],
             "sources": [
-                "https://github.com/truecharts/charts/tree/master/charts/enterprise/traefik",
-                "https://github.com/traefik/traefik",
-                "https://github.com/traefik/traefik-helm-chart",
-                "https://traefik.io/",
-                "https://doc.traefik.io/traefik/"
+                "https://grafana.com/grafana/",
+                "https://hub.docker.com/r/grafana/grafana"
             ],
             "keywords": [
                 "jansauer",
@@ -43,32 +40,22 @@
         "schema": {
             "groups": [
                 {
-                    "name": "Traefik Configuration",
-                    "description": "Configure Traefik"
+                    "name": "Main Configuration",
+                    "description": "Configure Grafana"
                 },
                 {
                     "name": "Storage Configuration",
                     "description": "Configure Storage for Grafana"
+                },
+                {
+                    "name": "Ingress Configuration",
+                    "description": "Configure Ingress for Grafana"
                 }
             ],
-            "portals": {
-                "open": {
-                    "protocols": [
-                        "http"
-                    ],
-                    "host": [
-                        "$node_ip"
-                    ],
-                    "ports": [
-                        "9000"
-                    ],
-                    "path": "/dashboard"
-                }
-            },
             "questions": [
                 {
                     "variable": "TZ",
-                    "group": "Traefik Configuration",
+                    "group": "Main Configuration",
                     "label": "Timezone",
                     "schema": {
                         "type": "string",
@@ -90,24 +77,38 @@
                     }
                 },
                 {
-                    "variable": "grafanaStorage",
+                    "variable": "dataHostPath",
                     "group": "Storage Configuration",
-                    "label": "",
+                    "label": "Grafana Data Host Path",
                     "schema": {
-                        "type": "dict",
-                        "attrs": [
-                            {
-                                "variable": "dataHostPath",
-                                "label": "Host Path",
-                                "schema": {
-                                    "type": "hostpath",
-                                    "required": true
-                                }
-                            }
-                        ]
+                        "type": "hostpath",
+                        "required": true
+                    }
+                },
+                {
+                    "variable": "ingressHost",
+                    "group": "Ingress Configuration",
+                    "label": "Ingress Rule Hostname",
+                    "schema": {
+                        "type": "string",
+                        "required": true
                     }
                 }
-            ]
+            ],
+            "portals": {
+                "open": {
+                    "protocols": [
+                        "https"
+                    ],
+                    "host": [
+                        "$variable-ingressHost"
+                    ],
+                    "ports": [
+                        "443"
+                    ],
+                    "path": "/"
+                }
+            }
         },
         "app_readme": "<p><a href=\"https://grafana.com/oss/grafana/\">Grafana</a> is an open-source analytics and monitoring platform that allows users to visualize and analyze data from various sources through customizable dashboards.</p>",
         "detailed_readme": "<h1>Custom Grafana</h1>\n<p><a href=\"https://grafana.com/oss/grafana/\">Grafana</a> is an open-source analytics and monitoring platform that allows users to visualize and analyze data from various sources through customizable dashboards.</p>",
