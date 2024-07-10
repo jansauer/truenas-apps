@@ -18,6 +18,7 @@ questions:
         - definitions/timezone
 
   - variable: dataHostPath
+    group: Storage Configuration
     label: Grafana Data Host Path
     description: The host path to use for storage.
     schema:
