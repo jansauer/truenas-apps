@@ -13,7 +13,7 @@
             "latest_version": "1.0.39",
             "latest_app_version": "3.0.0",
             "latest_human_version": "3.0.0_1.0.39",
-            "last_update": "2024-07-10 20:35:48",
+            "last_update": "2024-07-12 15:14:56",
             "name": "traefik",
             "recommended": false,
             "title": "Traefik",
@@ -48,7 +48,7 @@
             "latest_version": "0.0.10",
             "latest_app_version": "2.1.9",
             "latest_human_version": "2.1.9_0.0.10",
-            "last_update": "2024-07-10 20:35:48",
+            "last_update": "2024-07-12 15:14:56",
             "name": "brightsky",
             "recommended": false,
             "title": "Brightsky",
@@ -67,6 +67,39 @@
             ],
             "icon_url": "https://brightsky.dev/favicon.svg"
         },
+        "overpass": {
+            "app_readme": "<p><a href=\"https://overpass-api.de/\">Overpass API</a> is an open-source API that provides powerful querying capabilities for extracting data from the OpenStreetMap database, enabling users to access and analyze geographic data with flexible and customizable queries.</p>",
+            "categories": [
+                "jansauer"
+            ],
+            "description": "Overpass is an api for querying, extracting and analyzing OpenStreetMap data.",
+            "healthy": true,
+            "healthy_error": null,
+            "home": "https://overpass-api.de/",
+            "location": "/__w/truenas-apps/truenas-apps/charts/overpass",
+            "latest_version": "0.0.1",
+            "latest_app_version": "0.7.62",
+            "latest_human_version": "0.7.62_0.0.1",
+            "last_update": "2024-07-12 15:16:24",
+            "name": "overpass",
+            "recommended": false,
+            "title": "Overpass",
+            "maintainers": [
+                {
+                    "name": "Jan Sauer",
+                    "url": "https://jansauer.de/",
+                    "email": "jan@jansauer.de"
+                }
+            ],
+            "tags": [],
+            "screenshots": [],
+            "sources": [
+                "https://overpass-api.de/",
+                "https://wiki.openstreetmap.org/wiki/Overpass_API",
+                "https://hub.docker.com/r/wiktorn/overpass-api"
+            ],
+            "icon_url": "https://overpass-api.de/logo.png"
+        },
         "grafana": {
             "app_readme": "<p><a href=\"https://grafana.com/oss/grafana/\">Grafana</a> is an open-source analytics and monitoring platform that allows users to visualize and analyze data from various sources through customizable dashboards.</p>",
             "categories": [
@@ -80,7 +113,7 @@
             "latest_version": "0.0.7",
             "latest_app_version": "11.1.0",
             "latest_human_version": "11.1.0_0.0.7",
-            "last_update": "2024-07-10 20:37:25",
+            "last_update": "2024-07-12 15:14:56",
             "name": "grafana",
             "recommended": false,
             "title": "Grafana",
