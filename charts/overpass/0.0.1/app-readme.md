@@ -1,0 +1,1 @@
+[Overpass API](https://overpass-api.de/) is an open-source API that provides powerful querying capabilities for extracting data from the OpenStreetMap database, enabling users to access and analyze geographic data with flexible and customizable queries.

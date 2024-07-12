@@ -1,0 +1,8 @@
+image:
+  repository: "wiktorn/overpass-api"
+  tag: "0.7.62"
+
+databaseHostPath: ""
+TZ: "Etc/UTC"
+
+ingressHost: ""

@@ -1,0 +1,40 @@
+groups:
+  - name: Main Configuration
+    description: Configure Overpass
+  - name: Ingress Configuration
+    description: Configure Ingress for Overpass
+
+questions:
+  - variable: databaseHostPath
+    group: Main Configuration
+    label: Database Host Path
+    schema:
+      type: hostpath
+      required: true
+
+  - variable: TZ
+    group: Main Configuration
+    label: Timezone
+    schema:
+      type: string
+      default: Etc/UTC
+      required: true
+      $ref:
+        - definitions/timezone
+
+  - variable: ingressHost
+    group: Ingress Configuration
+    label: Ingress Rule Hostname
+    schema:
+      type: string
+      required: true
+
+portals:
+  open:
+    protocols:
+      - "https"
+    host:
+      - "$variable-ingressHost"
+    ports:
+      - "443"
+    path: "/"

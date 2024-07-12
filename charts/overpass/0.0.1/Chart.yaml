@@ -1,0 +1,21 @@
+apiVersion: v2
+type: application
+name: overpass
+version: "0.0.1"
+appVersion: "0.7.62"
+kubeVersion: ">=1.16.0-0"
+description: Overpass is an api for querying, extracting and analyzing OpenStreetMap data.
+home: https://overpass-api.de/
+icon: https://overpass-api.de/logo.png
+maintainers:
+  - name: Jan Sauer
+    url: https://jansauer.de/
+    email: jan@jansauer.de
+sources:
+  - https://overpass-api.de/
+  - https://wiki.openstreetmap.org/wiki/Overpass_API
+  - https://hub.docker.com/r/wiktorn/overpass-api
+keywords:
+  - jansauer
+  - mapping
+  - api
