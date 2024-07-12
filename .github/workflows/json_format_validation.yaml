@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Validate json format
         run: |
           find -name upgrade_info.json -exec sh -c "cat {} | jq && exit 0 || echo $? >> .exit_status" \;
