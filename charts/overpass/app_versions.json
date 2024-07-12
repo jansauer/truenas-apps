@@ -1,20 +1,20 @@
 {
-    "0.0.1": {
+    "0.0.2": {
         "healthy": true,
         "supported": true,
         "healthy_error": null,
-        "location": "/__w/truenas-apps/truenas-apps/charts/overpass/0.0.1",
-        "last_update": "2024-07-12 15:16:24",
+        "location": "/__w/truenas-apps/truenas-apps/charts/overpass/0.0.2",
+        "last_update": "2024-07-12 15:40:02",
         "required_features": [
             "definitions/timezone"
         ],
-        "human_version": "0.7.62_0.0.1",
-        "version": "0.0.1",
+        "human_version": "0.7.62_0.0.2",
+        "version": "0.0.2",
         "chart_metadata": {
             "apiVersion": "v2",
             "type": "application",
             "name": "overpass",
-            "version": "0.0.1",
+            "version": "0.0.2",
             "appVersion": "0.7.62",
             "kubeVersion": ">=1.16.0-0",
             "description": "Overpass is an api for querying, extracting and analyzing OpenStreetMap data.",
