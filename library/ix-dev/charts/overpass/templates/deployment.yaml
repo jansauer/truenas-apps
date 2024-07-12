@@ -42,13 +42,14 @@ spec:
             - name: http
               containerPort: 80
           securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
             capabilities:
               drop: [ALL]
               add:
                 - NET_BIND_SERVICE
-{{/*            readOnlyRootFilesystem: true*/}}
-{{/*            runAsGroup: 472*/}}
-{{/*            runAsUser: 472*/}}
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
 {{/*          readinessProbe:*/}}
 {{/*            httpGet:*/}}
 {{/*              path: /api/health*/}}
@@ -75,7 +76,7 @@ spec:
               cpu: 100m
               memory: 128Mi
       securityContext:
-        fsGroup: 472
+        fsGroup: 1000
       volumes:
         - name: db
           hostPath:
