@@ -77,7 +77,7 @@ spec:
       securityContext:
         fsGroup: 472
       volumes:
-        - name: data
+        - name: db
           hostPath:
             type: Directory
             path: "{{ .Values.databaseHostPath }}"
