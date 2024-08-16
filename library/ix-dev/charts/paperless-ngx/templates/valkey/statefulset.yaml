@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: valkey
+spec:
+  serviceName: valkey
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: valkey
+  template:
+    metadata:
+      name: valkey
+      labels:
+        app.kubernetes.io/component: valkey
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: valkey
+          image: "{{ .Values.valkey.image.repository }}:{{ .Values.valkey.image.tag }}"
+          env:
+            - name: TZ
+              value: "{{ .Values.TZ }}"
+          ports:
+            - name: valkey
+              containerPort: 6379
+          volumeMounts:
+            - mountPath: /data
+              name: data
+          startupProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - valkey-cli ping
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - valkey-cli ping
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits: {}
+      volumes:
+        - name: data
+          hostPath:
+            type: Directory
+            path: {{ .Values.valkeyHostPath }}

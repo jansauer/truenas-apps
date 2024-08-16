@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+spec:
+  serviceName: postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: postgres
+  template:
+    metadata:
+      name: postgres
+      labels:
+        app.kubernetes.io/component: postgres
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: postgres
+          image: "{{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}"
+          env:
+            - name: POSTGRES_DB
+              value: paperless
+            - name: POSTGRES_USER
+              value: paperless
+            - name: POSTGRES_PASSWORD
+              value: paperless
+            - name: TZ
+              value: "{{ .Values.TZ }}"
+          ports:
+            - name: postgressql
+              containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: data
+          startupProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - exec pg_isready -U postgres
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - exec pg_isready -U postgres
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits: {}
+      volumes:
+        - name: data
+          hostPath:
+            type: Directory
+            path: {{ .Values.postgresHostPath }}
