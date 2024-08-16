@@ -1,0 +1,70 @@
+groups:
+  - name: Main Configuration
+    description: Configure Bright Sky
+  - name: Storage Configuration
+    description: Configure Storage for Bright Sky
+  - name: Ingress Configuration
+    description: Configure Ingress for Bright Sky
+
+questions:
+  - variable: secret
+    label: Secret
+    group: Main Configuration
+    schema:
+      type: string
+      required: true
+
+  - variable: TZ
+    label: Timezone
+    group: Main Configuration
+    schema:
+      type: string
+      default: Etc/UTC
+      required: true
+      $ref:
+        - definitions/timezone
+
+  - variable: dataHostPath
+    label: Data Host Path
+    group: Storage Configuration
+    schema:
+      type: hostpath
+      required: true
+
+  - variable: mediaHostPath
+    label: media Host Path
+    group: Storage Configuration
+    schema:
+      type: hostpath
+      required: true
+
+  - variable: valkeyHostPath
+    label: Valkey Host Path
+    group: Storage Configuration
+    schema:
+      type: hostpath
+      required: true
+
+  - variable: postgresHostPath
+    label: Postgres Host Path
+    group: Storage Configuration
+    schema:
+      type: hostpath
+      required: true
+
+  - variable: ingressHost
+    group: Ingress Configuration
+    label: Ingress Rule Hostname
+    schema:
+      type: string
+      required: true
+
+portals:
+  open:
+    protocols:
+      - "https"
+    host:
+      - "$variable-ingressHost"
+    ports:
+      - "443"
+    path: "/"

@@ -1,0 +1,19 @@
+apiVersion: v2
+type: application
+name: paperless-ngx
+version: 0.0.1
+appVersion: 2.11.4
+kubeVersion: ">=1.16.0-0"
+description: A document management system that transforms your physical documents into a searchable online archive so you can keep less paper.
+home: https://docs.paperless-ngx.com/
+icon: https://docs.paperless-ngx.com/assets/favicon.png
+maintainers:
+  - name: Jan Sauer
+    url: https://jansauer.de/
+    email: jan@jansauer.de
+sources:
+  - https://github.com/paperless-ngx/paperless-ngx
+  - https://github.com/truecharts/charts/tree/master/charts/stable/paperless-ngx
+keywords:
+  - jansauer
+  - documents
