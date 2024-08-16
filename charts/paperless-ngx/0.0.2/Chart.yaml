@@ -1,7 +1,7 @@
 apiVersion: v2
 type: application
 name: paperless-ngx
-version: 0.0.1
+version: 0.0.2
 appVersion: 2.11.4
 kubeVersion: ">=1.16.0-0"
 description: A document management system that transforms your physical documents into a searchable online archive so you can keep less paper.

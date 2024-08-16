@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/paperless-ngx/paperless-ngx
-  tag: v2.11.4
+  tag: 2.11.4
 
 valkey:
   image:
