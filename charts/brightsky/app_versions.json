@@ -4,7 +4,7 @@
         "supported": true,
         "healthy_error": null,
         "location": "/__w/truenas-apps/truenas-apps/charts/brightsky/0.0.10",
-        "last_update": "2024-08-16 10:04:50",
+        "last_update": "2024-08-16 10:15:57",
         "required_features": [
             "definitions/timezone"
         ],

@@ -1,20 +1,20 @@
 {
-    "0.0.2": {
+    "0.0.3": {
         "healthy": true,
         "supported": true,
         "healthy_error": null,
-        "location": "/__w/truenas-apps/truenas-apps/charts/paperless-ngx/0.0.2",
-        "last_update": "2024-08-16 10:06:05",
+        "location": "/__w/truenas-apps/truenas-apps/charts/paperless-ngx/0.0.3",
+        "last_update": "2024-08-16 10:17:21",
         "required_features": [
             "definitions/timezone"
         ],
-        "human_version": "2.11.4_0.0.2",
-        "version": "0.0.2",
+        "human_version": "2.11.4_0.0.3",
+        "version": "0.0.3",
         "chart_metadata": {
             "apiVersion": "v2",
             "type": "application",
             "name": "paperless-ngx",
-            "version": "0.0.2",
+            "version": "0.0.3",
             "appVersion": "2.11.4",
             "kubeVersion": ">=1.16.0-0",
             "description": "A document management system that transforms your physical documents into a searchable online archive so you can keep less paper.",
