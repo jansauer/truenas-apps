@@ -4,7 +4,7 @@
         "supported": true,
         "healthy_error": null,
         "location": "/__w/truenas-apps/truenas-apps/charts/overpass/0.0.3",
-        "last_update": "2024-07-12 17:24:47",
+        "last_update": "2024-08-16 09:33:12",
         "required_features": [
             "definitions/timezone"
         ],

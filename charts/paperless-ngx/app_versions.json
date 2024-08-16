@@ -1,25 +1,25 @@
 {
-    "0.0.10": {
+    "0.0.1": {
         "healthy": true,
         "supported": true,
         "healthy_error": null,
-        "location": "/__w/truenas-apps/truenas-apps/charts/brightsky/0.0.10",
-        "last_update": "2024-08-16 09:33:12",
+        "location": "/__w/truenas-apps/truenas-apps/charts/paperless-ngx/0.0.1",
+        "last_update": "2024-08-16 09:34:32",
         "required_features": [
             "definitions/timezone"
         ],
-        "human_version": "2.1.9_0.0.10",
-        "version": "0.0.10",
+        "human_version": "2.11.4_0.0.1",
+        "version": "0.0.1",
         "chart_metadata": {
             "apiVersion": "v2",
             "type": "application",
-            "name": "brightsky",
-            "version": "0.0.10",
-            "appVersion": "2.1.9",
+            "name": "paperless-ngx",
+            "version": "0.0.1",
+            "appVersion": "2.11.4",
             "kubeVersion": ">=1.16.0-0",
-            "description": "Bright Sky is an open-source api for weather information.",
-            "home": "https://brightsky.dev/",
-            "icon": "https://brightsky.dev/favicon.svg",
+            "description": "A document management system that transforms your physical documents into a searchable online archive so you can keep less paper.",
+            "home": "https://docs.paperless-ngx.com/",
+            "icon": "https://docs.paperless-ngx.com/assets/favicon.png",
             "maintainers": [
                 {
                     "name": "Jan Sauer",
@@ -28,12 +28,12 @@
                 }
             ],
             "sources": [
-                "https://github.com/jdemaeyer/brightsky/",
-                "https://github.com/jdemaeyer/brightsky-infrastructure/"
+                "https://github.com/paperless-ngx/paperless-ngx",
+                "https://github.com/truecharts/charts/tree/master/charts/stable/paperless-ngx"
             ],
             "keywords": [
                 "jansauer",
-                "opendata"
+                "documents"
             ]
         },
         "app_metadata": null,
@@ -54,39 +54,18 @@
             ],
             "questions": [
                 {
-                    "variable": "minDate",
+                    "variable": "secret",
+                    "label": "Secret",
                     "group": "Main Configuration",
-                    "label": "Minimal Date",
                     "schema": {
                         "type": "string",
-                        "default": "2018-01-01",
-                        "required": true
-                    }
-                },
-                {
-                    "variable": "pollingInterval",
-                    "group": "Main Configuration",
-                    "label": "Crontab Polling Interval",
-                    "schema": {
-                        "type": "string",
-                        "default": "*/10",
-                        "required": true
-                    }
-                },
-                {
-                    "variable": "workerReplicas",
-                    "group": "Main Configuration",
-                    "label": "Number of workers replicas",
-                    "schema": {
-                        "type": "int",
-                        "default": 1,
                         "required": true
                     }
                 },
                 {
                     "variable": "TZ",
-                    "group": "Main Configuration",
                     "label": "Timezone",
+                    "group": "Main Configuration",
                     "schema": {
                         "type": "string",
                         "default": "America/Los_Angeles",
@@ -107,22 +86,39 @@
                     }
                 },
                 {
-                    "variable": "postgres",
+                    "variable": "dataHostPath",
+                    "label": "Data Host Path",
                     "group": "Storage Configuration",
-                    "label": "",
                     "schema": {
-                        "type": "dict",
-                        "attrs": [
-                            {
-                                "variable": "hostPath",
-                                "label": "Postgres Host Path",
-                                "description": "The host path to use for storage.",
-                                "schema": {
-                                    "type": "hostpath",
-                                    "required": true
-                                }
-                            }
-                        ]
+                        "type": "hostpath",
+                        "required": true
+                    }
+                },
+                {
+                    "variable": "mediaHostPath",
+                    "label": "media Host Path",
+                    "group": "Storage Configuration",
+                    "schema": {
+                        "type": "hostpath",
+                        "required": true
+                    }
+                },
+                {
+                    "variable": "valkeyHostPath",
+                    "label": "Valkey Host Path",
+                    "group": "Storage Configuration",
+                    "schema": {
+                        "type": "hostpath",
+                        "required": true
+                    }
+                },
+                {
+                    "variable": "postgresHostPath",
+                    "label": "Postgres Host Path",
+                    "group": "Storage Configuration",
+                    "schema": {
+                        "type": "hostpath",
+                        "required": true
                     }
                 },
                 {
@@ -150,8 +146,8 @@
                 }
             }
         },
-        "app_readme": "<p><a href=\"https://brightsky.dev/\">Bright Sky</a> is an open-source API that provides easy access to weather data from the Deutscher Wetterdienst (DWD).</p>",
-        "detailed_readme": "<h1>Bright Sky</h1>\n<p><a href=\"https://brightsky.dev/\">Bright Sky</a> is an open-source API that provides easy access to weather data from the Deutscher Wetterdienst (DWD).</p>",
+        "app_readme": "<p><a href=\"https://docs.paperless-ngx.com/\">Paperless-ngx</a> is a document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.</p>",
+        "detailed_readme": "<h1>Paperless-ngx</h1>\n<p><a href=\"https://docs.paperless-ngx.com/\">Paperless-ngx</a> is a document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.</p>",
         "changelog": null
     }
 }

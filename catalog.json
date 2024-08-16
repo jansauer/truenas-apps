@@ -1,5 +1,134 @@
 {
     "charts": {
+        "paperless-ngx": {
+            "app_readme": "<p><a href=\"https://docs.paperless-ngx.com/\">Paperless-ngx</a> is a document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.</p>",
+            "categories": [
+                "jansauer"
+            ],
+            "description": "A document management system that transforms your physical documents into a searchable online archive so you can keep less paper.",
+            "healthy": true,
+            "healthy_error": null,
+            "home": "https://docs.paperless-ngx.com/",
+            "location": "/__w/truenas-apps/truenas-apps/charts/paperless-ngx",
+            "latest_version": "0.0.1",
+            "latest_app_version": "2.11.4",
+            "latest_human_version": "2.11.4_0.0.1",
+            "last_update": "2024-08-16 09:34:32",
+            "name": "paperless-ngx",
+            "recommended": false,
+            "title": "Paperless-ngx",
+            "maintainers": [
+                {
+                    "name": "Jan Sauer",
+                    "url": "https://jansauer.de/",
+                    "email": "jan@jansauer.de"
+                }
+            ],
+            "tags": [],
+            "screenshots": [],
+            "sources": [
+                "https://github.com/paperless-ngx/paperless-ngx",
+                "https://github.com/truecharts/charts/tree/master/charts/stable/paperless-ngx"
+            ],
+            "icon_url": "https://truecharts.org/img/hotlink-ok/chart-icons/paperless-ngx.webp"
+        },
+        "brightsky": {
+            "app_readme": "<p><a href=\"https://brightsky.dev/\">Bright Sky</a> is an open-source API that provides easy access to weather data from the Deutscher Wetterdienst (DWD).</p>",
+            "categories": [
+                "jansauer"
+            ],
+            "description": "Bright Sky is an open-source api for weather information.",
+            "healthy": true,
+            "healthy_error": null,
+            "home": "https://brightsky.dev/",
+            "location": "/__w/truenas-apps/truenas-apps/charts/brightsky",
+            "latest_version": "0.0.10",
+            "latest_app_version": "2.1.9",
+            "latest_human_version": "2.1.9_0.0.10",
+            "last_update": "2024-08-16 09:33:12",
+            "name": "brightsky",
+            "recommended": false,
+            "title": "Brightsky",
+            "maintainers": [
+                {
+                    "name": "Jan Sauer",
+                    "url": "https://jansauer.de/",
+                    "email": "jan@jansauer.de"
+                }
+            ],
+            "tags": [],
+            "screenshots": [],
+            "sources": [
+                "https://github.com/jdemaeyer/brightsky/",
+                "https://github.com/jdemaeyer/brightsky-infrastructure/"
+            ],
+            "icon_url": "https://brightsky.dev/favicon.svg"
+        },
+        "grafana": {
+            "app_readme": "<p><a href=\"https://grafana.com/oss/grafana/\">Grafana</a> is an open-source analytics and monitoring platform that allows users to visualize and analyze data from various sources through customizable dashboards.</p>",
+            "categories": [
+                "jansauer"
+            ],
+            "description": "Grafana is a analytics and monitoring platform.",
+            "healthy": true,
+            "healthy_error": null,
+            "home": "https://grafana.com/oss/grafana/",
+            "location": "/__w/truenas-apps/truenas-apps/charts/grafana",
+            "latest_version": "0.0.7",
+            "latest_app_version": "11.1.0",
+            "latest_human_version": "11.1.0_0.0.7",
+            "last_update": "2024-08-16 09:33:12",
+            "name": "grafana",
+            "recommended": false,
+            "title": "Grafana",
+            "maintainers": [
+                {
+                    "name": "Jan Sauer",
+                    "url": "https://jansauer.de/",
+                    "email": "jan@jansauer.de"
+                }
+            ],
+            "tags": [],
+            "screenshots": [],
+            "sources": [
+                "https://grafana.com/grafana/",
+                "https://hub.docker.com/r/grafana/grafana"
+            ],
+            "icon_url": "https://truecharts.org/img/hotlink-ok/chart-icons/grafana.webp"
+        },
+        "overpass": {
+            "app_readme": "<p><a href=\"https://overpass-api.de/\">Overpass API</a> is an open-source API that provides powerful querying capabilities for extracting data from the OpenStreetMap database, enabling users to access and analyze geographic data with flexible and customizable queries.</p>",
+            "categories": [
+                "jansauer"
+            ],
+            "description": "Overpass is an api for querying, extracting and analyzing OpenStreetMap data.",
+            "healthy": true,
+            "healthy_error": null,
+            "home": "https://overpass-api.de/",
+            "location": "/__w/truenas-apps/truenas-apps/charts/overpass",
+            "latest_version": "0.0.3",
+            "latest_app_version": "0.7.62",
+            "latest_human_version": "0.7.62_0.0.3",
+            "last_update": "2024-08-16 09:33:12",
+            "name": "overpass",
+            "recommended": false,
+            "title": "Overpass",
+            "maintainers": [
+                {
+                    "name": "Jan Sauer",
+                    "url": "https://jansauer.de/",
+                    "email": "jan@jansauer.de"
+                }
+            ],
+            "tags": [],
+            "screenshots": [],
+            "sources": [
+                "https://overpass-api.de/",
+                "https://wiki.openstreetmap.org/wiki/Overpass_API",
+                "https://hub.docker.com/r/wiktorn/overpass-api"
+            ],
+            "icon_url": "https://overpass-api.de/logo.png"
+        },
         "traefik": {
             "app_readme": "<p><a href=\"https://traefik.io/\">Traefik</a> is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease.</p>",
             "categories": [
@@ -13,7 +142,7 @@
             "latest_version": "1.0.39",
             "latest_app_version": "3.0.0",
             "latest_human_version": "3.0.0_1.0.39",
-            "last_update": "2024-07-12 17:23:26",
+            "last_update": "2024-08-16 09:33:12",
             "name": "traefik",
             "recommended": false,
             "title": "Traefik",
@@ -34,103 +163,6 @@
                 "https://doc.traefik.io/traefik/"
             ],
             "icon_url": "https://truecharts.org/img/hotlink-ok/chart-icons/traefik.png"
-        },
-        "brightsky": {
-            "app_readme": "<p><a href=\"https://brightsky.dev/\">Bright Sky</a> is an open-source API that provides easy access to weather data from the Deutscher Wetterdienst (DWD).</p>",
-            "categories": [
-                "jansauer"
-            ],
-            "description": "Bright Sky is an open-source api for weather information.",
-            "healthy": true,
-            "healthy_error": null,
-            "home": "https://brightsky.dev/",
-            "location": "/__w/truenas-apps/truenas-apps/charts/brightsky",
-            "latest_version": "0.0.10",
-            "latest_app_version": "2.1.9",
-            "latest_human_version": "2.1.9_0.0.10",
-            "last_update": "2024-07-12 17:23:26",
-            "name": "brightsky",
-            "recommended": false,
-            "title": "Brightsky",
-            "maintainers": [
-                {
-                    "name": "Jan Sauer",
-                    "url": "https://jansauer.de/",
-                    "email": "jan@jansauer.de"
-                }
-            ],
-            "tags": [],
-            "screenshots": [],
-            "sources": [
-                "https://github.com/jdemaeyer/brightsky/",
-                "https://github.com/jdemaeyer/brightsky-infrastructure/"
-            ],
-            "icon_url": "https://brightsky.dev/favicon.svg"
-        },
-        "overpass": {
-            "app_readme": "<p><a href=\"https://overpass-api.de/\">Overpass API</a> is an open-source API that provides powerful querying capabilities for extracting data from the OpenStreetMap database, enabling users to access and analyze geographic data with flexible and customizable queries.</p>",
-            "categories": [
-                "jansauer"
-            ],
-            "description": "Overpass is an api for querying, extracting and analyzing OpenStreetMap data.",
-            "healthy": true,
-            "healthy_error": null,
-            "home": "https://overpass-api.de/",
-            "location": "/__w/truenas-apps/truenas-apps/charts/overpass",
-            "latest_version": "0.0.3",
-            "latest_app_version": "0.7.62",
-            "latest_human_version": "0.7.62_0.0.3",
-            "last_update": "2024-07-12 17:24:47",
-            "name": "overpass",
-            "recommended": false,
-            "title": "Overpass",
-            "maintainers": [
-                {
-                    "name": "Jan Sauer",
-                    "url": "https://jansauer.de/",
-                    "email": "jan@jansauer.de"
-                }
-            ],
-            "tags": [],
-            "screenshots": [],
-            "sources": [
-                "https://overpass-api.de/",
-                "https://wiki.openstreetmap.org/wiki/Overpass_API",
-                "https://hub.docker.com/r/wiktorn/overpass-api"
-            ],
-            "icon_url": "https://overpass-api.de/logo.png"
-        },
-        "grafana": {
-            "app_readme": "<p><a href=\"https://grafana.com/oss/grafana/\">Grafana</a> is an open-source analytics and monitoring platform that allows users to visualize and analyze data from various sources through customizable dashboards.</p>",
-            "categories": [
-                "jansauer"
-            ],
-            "description": "Grafana is a analytics and monitoring platform.",
-            "healthy": true,
-            "healthy_error": null,
-            "home": "https://grafana.com/oss/grafana/",
-            "location": "/__w/truenas-apps/truenas-apps/charts/grafana",
-            "latest_version": "0.0.7",
-            "latest_app_version": "11.1.0",
-            "latest_human_version": "11.1.0_0.0.7",
-            "last_update": "2024-07-12 17:23:26",
-            "name": "grafana",
-            "recommended": false,
-            "title": "Grafana",
-            "maintainers": [
-                {
-                    "name": "Jan Sauer",
-                    "url": "https://jansauer.de/",
-                    "email": "jan@jansauer.de"
-                }
-            ],
-            "tags": [],
-            "screenshots": [],
-            "sources": [
-                "https://grafana.com/grafana/",
-                "https://hub.docker.com/r/grafana/grafana"
-            ],
-            "icon_url": "https://truecharts.org/img/hotlink-ok/chart-icons/grafana.webp"
         }
     },
     "test": {}
