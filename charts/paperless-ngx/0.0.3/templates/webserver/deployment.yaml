@@ -34,7 +34,7 @@ spec:
             - name: PAPERLESS_OCR_LANGUAGE
               value: "deu"
             - name: PAPERLESS_URL
-              value: "{{ .Values.ingressHost }}"
+              value: "https://{{ .Values.ingressHost }}"
             - name: TZ
               value: "{{ .Values.TZ }}"
           ports:
