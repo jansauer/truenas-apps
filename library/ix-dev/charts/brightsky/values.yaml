@@ -1,6 +1,6 @@
 image:
   repository: jdemaeyer/brightsky
-  tag: v2.1.9
+  tag: v2.1.10
 
 minDate: "2018-01-01"
 pollingInterval: "*/10"
