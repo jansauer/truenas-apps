@@ -1,0 +1,21 @@
+services:
+  app:
+    image: daya0576/beaverhabits:0.4.0
+    environment:
+      HABITS_STORAGE: USER_DISK
+      MAX_USER_COUNT: 1
+      INDEX_SHOW_HABIT_COUNT: true
+    volumes:
+      - /mnt/applications/beaverhabits:/app/.user/
+    networks:
+      - default
+      - traefik_default
+    labels:
+      traefik.enable: true
+      traefik.http.routers.maybe.entrypoints: websecure
+      traefik.http.routers.maybe.rule: Host(`beaverhabits.${DOMAIN}`)
+      traefik.http.services.maybe.loadbalancer.server.port: 8080
+    restart: unless-stopped
+networks:
+  traefik_default:
+    external: true
