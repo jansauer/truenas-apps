@@ -1,0 +1,42 @@
+services:
+  app:
+    image: traefik:v3.2.3
+    command:
+      - --global.checknewversion=false
+      - --global.sendanonymoususage=false
+      - --certificatesresolvers.dns.acme.dnschallenge=true
+      - --certificatesresolvers.dns.acme.dnschallenge.provider=gcloud
+      - --certificatesresolvers.dns.acme.email=${ACME_EMAIL}
+      - --certificatesresolvers.dns.acme.keytype=EC384
+      - --certificatesresolvers.dns.acme.storage=/config/dns.json
+      - --entryPoints.websecure.address=:443/tcp
+      - --entrypoints.websecure.http.tls.certresolver=dns
+      - --entrypoints.websecure.http.tls.domains[0].main=${ACME_DOMAIN}
+      - --entrypoints.websecure.http.tls.domains[0].sans=*.${ACME_DOMAIN}
+      - --entryPoints.web.address=:80/tcp
+      - --entryPoints.web.http.redirections.entrypoint.scheme=https
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entryPoints.traefik.address=:9000/tcp
+      - --providers.docker.exposedByDefault=false
+      - --providers.docker.network=traefik_default
+      - --providers.file.directory=/config
+      - --serverstransport.insecureskipverify=true
+      - --api.dashboard
+      - --log.level=INFO
+    environment:
+      GCE_SERVICE_ACCOUNT_FILE: /config/${GCE_CREDENTIALS}
+    volumes:
+      - /mnt/applications/traefik:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+    labels:
+      traefik.enable: true
+      traefik.http.routers.traefik.entrypoints: websecure
+      traefik.http.routers.traefik.rule: Host(`${DOMAIN}`)
+      traefik.http.routers.traefik.service: api@internal
+x-dockge:
+  urls:
+    - https://${DOMAIN}
