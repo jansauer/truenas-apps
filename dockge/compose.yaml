@@ -10,12 +10,12 @@ services:
     networks:
       - default
       - traefik_default
-    restart: unless-stopped
     labels:
       traefik.enable: true
       traefik.http.routers.dockge.entrypoints: websecure
       traefik.http.routers.dockge.rule: Host(`${DOMAIN}`)
       traefik.http.services.dockge.loadbalancer.server.port: 5001
+    restart: unless-stopped
 networks:
   traefik_default:
     external: true

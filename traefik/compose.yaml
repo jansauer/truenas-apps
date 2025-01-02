@@ -31,12 +31,12 @@ services:
     ports:
       - 443:443
       - 80:80
-    restart: unless-stopped
     labels:
       traefik.enable: true
       traefik.http.routers.traefik.entrypoints: websecure
       traefik.http.routers.traefik.rule: Host(`${DOMAIN}`)
       traefik.http.routers.traefik.service: api@internal
+    restart: unless-stopped
 x-dockge:
   urls:
     - https://${DOMAIN}
