@@ -12,9 +12,9 @@ services:
       - traefik_default
     labels:
       traefik.enable: true
-      traefik.http.routers.maybe.entrypoints: websecure
-      traefik.http.routers.maybe.rule: Host(`beaverhabits.${DOMAIN}`)
-      traefik.http.services.maybe.loadbalancer.server.port: 8080
+      traefik.http.routers.beaverhabits.entrypoints: websecure
+      traefik.http.routers.beaverhabits.rule: Host(`${DOMAIN}`)
+      traefik.http.services.beaverhabits.loadbalancer.server.port: 8080
     restart: unless-stopped
 networks:
   traefik_default:
