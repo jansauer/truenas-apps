@@ -22,7 +22,7 @@ services:
       BRIGHTSKY_DATABASE_URL: postgres://brightsky:brightsky@postgres:5432
       BRIGHTSKY_REDIS_URL: redis://valkey:6379
       BRIGHTSKY_MIN_DATE: "2018-01-01"
-      BRIGHTSKY_POLLING_CRONTAB_MINUTE: "*"
+      BRIGHTSKY_POLLING_CRONTAB_MINUTE: "*/30"
     restart: unless-stopped
     depends_on:
       - postgres
@@ -45,3 +45,6 @@ services:
 networks:
   traefik_default:
     external: true
+x-dockge:
+  urls:
+    - https://${DOMAIN}
