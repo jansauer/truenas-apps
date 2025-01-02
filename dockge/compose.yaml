@@ -1,0 +1,21 @@
+services:
+  app:
+    image: louislam/dockge:1.4.2
+    environment:
+      DOCKGE_STACKS_DIR: /opt/stacks
+    volumes:
+      - /mnt/applications/dockge/data:/app/data
+      - /mnt/applications/dockge/stacks:/opt/stacks
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - default
+      - traefik_default
+    restart: unless-stopped
+    labels:
+      traefik.enable: true
+      traefik.http.routers.dockge.entrypoints: websecure
+      traefik.http.routers.dockge.rule: Host(`${DOMAIN}`)
+      traefik.http.services.dockge.loadbalancer.server.port: 5001
+networks:
+  traefik_default:
+    external: true
