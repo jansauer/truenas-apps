@@ -1,0 +1,41 @@
+services:
+  webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:2.13.5
+    environment:
+      PAPERLESS_REDIS: redis://valkey:6379
+      PAPERLESS_DBHOST: postgres
+      PAPERLESS_SECRET_KEY: ${SECRET_KEY}
+      PAPERLESS_OCR_LANGUAGE: deu
+      PAPERLESS_URL: https://${DOMAIN}
+    volumes:
+      - /mnt/applications/paperless-ngx/data:/usr/src/paperless/data
+      - /mnt/applications/paperless-ngx/media:/usr/src/paperless/media
+    networks:
+      - traefik_default
+      - default
+    restart: unless-stopped
+    labels:
+      traefik.enable: true
+      traefik.http.routers.paperless.entrypoints: websecure
+      traefik.http.routers.paperless.rule: Host(`${DOMAIN}`)
+  postgres:
+    image: postgres:16.6-alpine3.21
+    shm_size: 512mb
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: paperless
+    volumes:
+      - /mnt/applications/paperless-ngx/postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+  valkey:
+    image: valkey/valkey:8.0.1-alpine3.20
+    volumes:
+      - /mnt/applications/paperless-ngx/valkey:/data
+    restart: unless-stopped
+networks:
+  traefik_default:
+    external: true
+x-dockge:
+  urls:
+    - https://${DOMAIN}
