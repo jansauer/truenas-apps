@@ -28,7 +28,7 @@ services:
       - postgres
       - valkey
   postgres:
-    image: postgres:16.6-alpine3.21
+    image: postgres:17.2-alpine3.21
     shm_size: 512mb
     environment:
       POSTGRES_DB: brightsky
