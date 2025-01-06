@@ -10,6 +10,8 @@ services:
     networks:
       - default
       - traefik_default
+    healthcheck:
+      disable: true
     labels:
       traefik.enable: true
       traefik.http.routers.dockge.entrypoints: websecure

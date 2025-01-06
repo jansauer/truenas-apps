@@ -13,6 +13,8 @@ services:
     networks:
       - traefik_default
       - default
+    healthcheck:
+      disable: true
     labels:
       traefik.enable: true
       traefik.http.routers.paperless.entrypoints: websecure
