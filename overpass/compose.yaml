@@ -13,7 +13,6 @@ services:
       - /mnt/applications/overpass:/db
     networks:
       - traefik_default
-      - default
     healthcheck:
       disable: true
     labels:
