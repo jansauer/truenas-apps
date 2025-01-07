@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   overpass:
     image: wiktorn/overpass-api:0.7.62
@@ -20,9 +19,11 @@ services:
       traefik.http.routers.overpass.entrypoints: websecure
       traefik.http.routers.overpass.rule: Host(`${DOMAIN}`)
     restart: unless-stopped
+
 networks:
   traefik_default:
     external: true
+
 x-dockge:
   urls:
     - https://${DOMAIN}

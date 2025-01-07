@@ -17,9 +17,11 @@ services:
       traefik.http.routers.dockge.rule: Host(`${DOMAIN}`)
       traefik.http.services.dockge.loadbalancer.server.port: 5001
     restart: unless-stopped
+
 networks:
   traefik_default:
     external: true
+
 x-dockge:
   urls:
     - https://${DOMAIN}

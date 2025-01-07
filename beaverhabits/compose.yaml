@@ -15,9 +15,11 @@ services:
       traefik.http.routers.beaverhabits.rule: Host(`${DOMAIN}`)
       traefik.http.services.beaverhabits.loadbalancer.server.port: 8080
     restart: unless-stopped
+
 networks:
   traefik_default:
     external: true
+
 x-dockge:
   urls:
     - https://${DOMAIN}

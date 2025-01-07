@@ -1,6 +1,6 @@
 # Dockge
 
-Simple UI for Docker Compose stacks. Allows me to easily start and stop complete apps and view logs.  
+Simple UI for Docker Compose stacks. Allows me to easily start and stop complete apps and view logs.
 
 I'm pulling the stacks from this git repo using a deploy key directly onto my TrueNAS server.
 
