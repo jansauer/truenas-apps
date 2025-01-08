@@ -1,0 +1,65 @@
+services:
+  app:
+    image: ghcr.io/immich-app/immich-server:v1.123.0
+    environment:
+      DB_HOSTNAME: postgres
+      REDIS_HOSTNAME: valkey
+    volumes:
+      - /mnt/applications/immich/upload:/usr/src/app/upload
+      - /mnt/space/photos:/archive:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - default
+      - traefik_default
+    healthcheck:
+      disable: true
+    labels:
+      traefik.enable: true
+      traefik.http.routers.immich.entrypoints: websecure
+      traefik.http.routers.immich.rule: Host(`${DOMAIN}`)
+      traefik.http.services.immich.loadbalancer.server.port: 2283
+    restart: always
+    depends_on:
+      - postgres
+      - valkey
+
+  ml:
+    image: ghcr.io/immich-app/immich-machine-learning:v1.123.0-openvino
+    volumes:
+      - /mnt/applications/immich/model-cache:/cache
+    healthcheck:
+      disable: false
+    restart: always
+
+  postgres:
+    image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0
+    command: >-
+      postgres
+      -c shared_preload_libraries=vectors.so
+      -c 'search_path="$$user", public, vectors'
+      -c logging_collector=on
+      -c max_wal_size=2GB
+      -c shared_buffers=512MB
+      -c wal_compression=on
+    environment:
+      POSTGRES_DB: immich
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+    volumes:
+      - /mnt/applications/immich/postgres:/var/lib/postgresql/data
+    restart: always
+
+  valkey:
+    image: valkey/valkey:8.0.1-alpine3.20
+    volumes:
+      - /mnt/applications/immich/valkey:/data
+    restart: unless-stopped
+
+networks:
+  traefik_default:
+    external: true
+
+x-dockge:
+  urls:
+    - https://${DOMAIN}
