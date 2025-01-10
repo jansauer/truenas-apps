@@ -1,0 +1,31 @@
+services:
+  app:
+    image: jellyfin/jellyfin:10.10.3
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://${DOMAIN}
+    volumes:
+      - /mnt/applications/jellyfin/config:/config
+      - /mnt/applications/jellyfin/cache:/cache
+      - /mnt/space/media:/media:ro
+    ports:
+      - 8096:8096
+      - 1900:1900/udp
+      - 7359:7359/udp
+    networks:
+      - traefik_default
+    healthcheck:
+      disable: true
+    labels:
+      traefik.enable: true
+      traefik.http.routers.jellyfin.entrypoints: websecure
+      traefik.http.routers.jellyfin.rule: Host(`${DOMAIN}`)
+      traefik.http.services.jellyfin.loadbalancer.server.port: 8096
+    restart: unless-stopped
+
+networks:
+  traefik_default:
+    external: true
+
+x-dockge:
+  urls:
+    - https://${DOMAIN}
