@@ -1,4 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", ":label(renovate)", ":pinVersions"]
+  "extends": ["config:recommended", ":label(renovate)", ":pinVersions"],
+  "packageRules": [
+    {
+      "groupName": "ghcr.io/immich-app",
+      "matchSourceUrls": [
+        "https://ghcr.io/immich-app/immich-server",
+        "https://ghcr.io/immich-app/immich-machine-learning"
+      ]
+    }
+  ]
 }
