@@ -4,9 +4,9 @@
   "packageRules": [
     {
       "groupName": "ghcr.io/immich-app",
-      "matchSourceUrls": [
-        "https://ghcr.io/immich-app/immich-server",
-        "https://ghcr.io/immich-app/immich-machine-learning"
+      "matchPackageNames": [
+        "ghcr.io/immich-app/immich-server",
+        "ghcr.io/immich-app/immich-machine-learning"
       ]
     }
   ]
