@@ -38,6 +38,19 @@ services:
       - /mnt/applications/paperless-ngx/valkey:/data
     restart: unless-stopped
 
+#  ai:
+#    image: clusterzx/paperless-ai
+#    volumes:
+#      - /mnt/applications/paperless-ngx/ai:/app/data
+#    networks:
+#      - traefik_default
+#      - default
+#    labels:
+#      traefik.enable: true
+#      traefik.http.routers.paperless-ai.entrypoints: websecure
+#      traefik.http.routers.paperless-ai.rule: Host(`${DOMAIN_AI}`)
+#    restart: unless-stopped
+
 networks:
   traefik_default:
     external: true
@@ -45,3 +58,4 @@ networks:
 x-dockge:
   urls:
     - https://${DOMAIN}
+    - https://${DOMAIN_AI}
