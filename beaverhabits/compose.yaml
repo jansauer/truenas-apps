@@ -1,6 +1,6 @@
 services:
   app:
-    image: daya0576/beaverhabits:0.4.1
+    image: daya0576/beaverhabits:0.4.3
     environment:
       HABITS_STORAGE: USER_DISK
       MAX_USER_COUNT: 1
