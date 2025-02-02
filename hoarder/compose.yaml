@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/hoarder-app/hoarder:0.21.0
+    image: ghcr.io/hoarder-app/hoarder:0.22.0
     environment:
       DATA_DIR: /data
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
