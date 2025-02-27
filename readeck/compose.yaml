@@ -23,5 +23,3 @@ services:
 networks:
   traefik_default:
     external: true
-
-# nYV3fvs4Igl327T16DJoPbK3p2Vfg5
