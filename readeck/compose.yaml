@@ -1,0 +1,30 @@
+services:
+  readeck:
+    image: codeberg.org/readeck/readeck:0.17.1
+    environment:
+      - READECK_SECRET_KEY=${SECRET_KEY}
+      - READECK_SERVER_HOST=0.0.0.0
+      - READECK_SERVER_PORT=8000
+      - READECK_SERVER_PREFIX=/
+      - READECK_ALLOWED_HOSTS=${DOMAIN}
+      - READECK_LOG_LEVEL=info
+    volumes:
+      - /mnt/applications/readeck:/readeck
+    networks:
+      - traefik_default
+    healthcheck:
+      test: ["CMD", "/bin/readeck", "healthcheck", "-config", "config.toml"]
+      interval: 30s
+      timeout: 2s
+      retries: 3
+    labels:
+      traefik.enable: true
+      traefik.http.routers.readeck.entrypoints: websecure
+      traefik.http.routers.readeck.rule: Host(`${DOMAIN}`)
+    restart: unless-stopped
+
+networks:
+  traefik_default:
+    external: true
+
+# nYV3fvs4Igl327T16DJoPbK3p2Vfg5
