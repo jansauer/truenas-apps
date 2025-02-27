@@ -13,10 +13,7 @@ services:
     networks:
       - traefik_default
     healthcheck:
-      test: ["CMD", "/bin/readeck", "healthcheck", "-config", "config.toml"]
-      interval: 30s
-      timeout: 2s
-      retries: 3
+      disable: true
     labels:
       traefik.enable: true
       traefik.http.routers.readeck.entrypoints: websecure
