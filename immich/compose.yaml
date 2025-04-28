@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/immich-app/immich-server:v1.132.1
+    image: ghcr.io/immich-app/immich-server:v1.132.3
     environment:
       DB_HOSTNAME: postgres
       REDIS_HOSTNAME: valkey
