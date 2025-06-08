@@ -12,11 +12,15 @@ $ docker context use truenas
 $ docker compose --env-file=.env up -d
 ```
 
-docker ps --format 'table {{ .Names }}\t{{ .ID }}\t{{ .Image }}\t{{ .Status }}' | sort
+```
+$ docker ps -a --format 'table {{ .Names }}\t{{ .ID }}\t{{ .Image }}\t{{ .Status }}' | sort
+```
 
+- [Actual](./actual)
 - [Bright Sky](./brightsky)
 - [Immich](./immich)
 - [Jellyfin](./jellyfin)
+- [Karakeep](./karakeep)
 - [Overpass](./overpass)
 - [Paperless-ngx](./paperless-ngx)
 - [Plex](./plex)
