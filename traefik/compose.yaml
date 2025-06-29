@@ -1,6 +1,6 @@
 services:
   app:
-    image: traefik:v3.4.1
+    image: traefik:v3.4.3
     command:
       - --global.checknewversion=false
       - --global.sendanonymoususage=false
