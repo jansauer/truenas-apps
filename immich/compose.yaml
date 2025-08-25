@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/immich-app/immich-server:v1.136.0
+    image: ghcr.io/immich-app/immich-server:v1.139.4
     environment:
       DB_HOSTNAME: postgres
       REDIS_HOSTNAME: valkey
@@ -24,7 +24,7 @@ services:
       - valkey
 
   ml:
-    image: ghcr.io/immich-app/immich-machine-learning:v1.136.0-openvino
+    image: ghcr.io/immich-app/immich-machine-learning:v1.139.4-openvino
     volumes:
       - /mnt/applications/immich/model-cache:/cache
     healthcheck:
