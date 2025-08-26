@@ -21,6 +21,7 @@ $ docker ps -a --format 'table {{ .Names }}\t{{ .ID }}\t{{ .Image }}\t{{ .Status
 - [Immich](./immich)
 - [Jellyfin](./jellyfin)
 - [Karakeep](./karakeep)
+- [Mealie](./mealie)
 - [Overpass](./overpass)
 - [Paperless-ngx](./paperless-ngx)
 - [Plex](./plex)
