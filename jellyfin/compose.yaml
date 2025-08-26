@@ -25,7 +25,3 @@ services:
 networks:
   traefik_default:
     external: true
-
-x-dockge:
-  urls:
-    - https://${DOMAIN}

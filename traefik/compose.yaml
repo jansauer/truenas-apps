@@ -37,7 +37,3 @@ services:
       traefik.http.routers.traefik.rule: Host(`${DOMAIN}`)
       traefik.http.routers.traefik.service: api@internal
     restart: unless-stopped
-
-x-dockge:
-  urls:
-    - https://${DOMAIN}
