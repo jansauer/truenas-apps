@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/karakeep-app/karakeep:0.26.0
+    image: ghcr.io/karakeep-app/karakeep:0.27.0
     environment:
       DATA_DIR: /data
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
