@@ -17,13 +17,14 @@ Create a dump
 % docker exec -it karakeep-meilisearch-1 sh
 # curl -X POST -H 'Authorization: Bearer API_KEY' 'http://localhost:7700/dumps'
 # curl -X GET  -H 'Authorization: Bearer API_KEY' 'http://localhost:7700/tasks/ID'
+# mv data.ms old_data.ms
 ```
 
 ```
 After starting the new version
 % docker exec -it karakeep-meilisearch-1 sh
-# mv data.ms old_data.ms
-# meilisearch --import-dump dumps/XXX.dump --master-key="API_KEY"
+# rm -rf data.ms
+# meilisearch --master-key="API_KEY" --import-dump dumps/XXX.dump 
 # rm -rf dumps old_data.ms
 % docker restart karakeep-meilisearch-1
 ```
