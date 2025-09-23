@@ -13,6 +13,11 @@ services:
       - --entrypoints.websecure.http.tls.certresolver=dns
       - --entrypoints.websecure.http.tls.domains[0].main=${ACME_DOMAIN}
       - --entrypoints.websecure.http.tls.domains[0].sans=*.${ACME_DOMAIN}
+      # Timeouts for Immich
+      # See https://immich.app/docs/administration/reverse-proxy#traefik-proxy-example-config
+      - --entrypoints.websecure.transport.respondingTimeouts.readTimeout=600s
+      - --entrypoints.websecure.transport.respondingTimeouts.idleTimeout=600s
+      - --entrypoints.websecure.transport.respondingTimeouts.writeTimeout=600s
       - --entryPoints.web.address=:80/tcp
       - --entryPoints.web.http.redirections.entrypoint.scheme=https
       - --entrypoints.web.http.redirections.entrypoint.to=websecure

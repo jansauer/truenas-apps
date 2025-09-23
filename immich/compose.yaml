@@ -1,12 +1,14 @@
 services:
-  app:
+  server:
     image: ghcr.io/immich-app/immich-server:v1.142.1
     environment:
       DB_HOSTNAME: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_DATABASE_NAME: immich
       REDIS_HOSTNAME: valkey
     volumes:
-      - /mnt/applications/immich/upload:/usr/src/app/upload
-      - /mnt/space/photos:/archive:ro
+      - /mnt/applications/immich/upload:/data
       - /etc/localtime:/etc/localtime:ro
     networks:
       - default
@@ -28,26 +30,21 @@ services:
     volumes:
       - /mnt/applications/immich/model-cache:/cache
     healthcheck:
-      disable: false
+      disable: true
     restart: always
 
   postgres:
-    image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0
-    command: >-
-      postgres
-      -c shared_preload_libraries=vectors.so
-      -c 'search_path="$$user", public, vectors'
-      -c logging_collector=on
-      -c max_wal_size=2GB
-      -c shared_buffers=512MB
-      -c wal_compression=on
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
     environment:
-      POSTGRES_DB: immich
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: immich
       POSTGRES_INITDB_ARGS: "--data-checksums"
     volumes:
       - /mnt/applications/immich/postgres:/var/lib/postgresql/data
+    healthcheck:
+      disable: true
+    shm_size: 128mb
     restart: always
 
   valkey:
