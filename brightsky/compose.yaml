@@ -1,6 +1,6 @@
 services:
   webserver:
-    image: jdemaeyer/brightsky:v2.2.6
+    image: jdemaeyer/brightsky:v2.2.7
     command: serve --bind 0.0.0.0:5000
     environment:
       BRIGHTSKY_DATABASE_URL: postgres://brightsky:brightsky@postgres:5432
@@ -17,7 +17,7 @@ services:
       - postgres
 
   worker:
-    image: jdemaeyer/brightsky:v2.2.6
+    image: jdemaeyer/brightsky:v2.2.7
     command: --migrate work
     environment:
       BRIGHTSKY_DATABASE_URL: postgres://brightsky:brightsky@postgres:5432
