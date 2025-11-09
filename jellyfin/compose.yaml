@@ -1,6 +1,6 @@
 services:
   app:
-    image: jellyfin/jellyfin:10.11.0
+    image: jellyfin/jellyfin:10.11.2
     environment:
       - JELLYFIN_PublishedServerUrl=https://${DOMAIN}
     volumes:
