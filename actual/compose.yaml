@@ -1,6 +1,6 @@
 services:
   app:
-    image: actualbudget/actual-server:25.10.0-alpine
+    image: actualbudget/actual-server:25.11.0-alpine
     volumes:
       - /mnt/applications/actual:/data
     networks:
