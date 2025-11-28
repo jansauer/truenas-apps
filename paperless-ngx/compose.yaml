@@ -1,6 +1,6 @@
 services:
   webserver:
-    image: ghcr.io/paperless-ngx/paperless-ngx:2.19.5
+    image: ghcr.io/paperless-ngx/paperless-ngx:2.20.0
     environment:
       PAPERLESS_REDIS: redis://valkey:6379
       PAPERLESS_DBHOST: postgres
