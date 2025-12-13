@@ -1,6 +1,6 @@
 services:
   mealie:
-    image: ghcr.io/mealie-recipes/mealie:v3.6.1
+    image: ghcr.io/mealie-recipes/mealie:v3.7.0
     environment:
       BASE_URL: ${DOMAIN}
       ALLOW_SIGNUP: "true"
