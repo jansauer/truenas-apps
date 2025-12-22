@@ -22,14 +22,14 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:18.1-alpine3.21
+    image: postgres:18.1-alpine3.23
     shm_size: 512mb
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
       POSTGRES_PASSWORD: paperless
     volumes:
-      - /mnt/applications/paperless-ngx/postgres:/var/lib/postgresql/data
+      - /mnt/applications/paperless-ngx/postgres:/var/lib/postgresql/18/docker
     restart: unless-stopped
 
   valkey:
