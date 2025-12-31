@@ -1,0 +1,22 @@
+services:
+  web:
+    image: ghcr.io/jofoerster/habitsync:0.16.6
+    user: "6842:6842"
+    environment:
+      - BASE_URL=https://${DOMAIN}/
+      - APP_SECURITY_ISSUERS_POCKETID_URL=${POCKETID_URL}
+      - APP_SECURITY_ISSUERS_POCKETID_CLIENT-ID=${POCKETID_CLIENT_ID}
+      - APP_SECURITY_ISSUERS_POCKETID_NEEDS-CONFIRMATION=false
+      - JWT_SECRET=${JWT_SECRET}
+      - SPRING_MAIL_ENABLED=false
+    volumes:
+      - /mnt/applications/habitsync:/data
+    networks:
+      - newt_default
+    healthcheck:
+      disable: true
+    restart: unless-stopped
+
+networks:
+  newt_default:
+    external: true
