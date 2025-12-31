@@ -1,0 +1,9 @@
+services:
+  newt:
+    image: ghcr.io/fosrl/newt:1.8.1
+    container_name: newt
+    environment:
+      - PANGOLIN_ENDPOINT=${PANGOLIN_ENDPOINT}
+      - NEWT_ID=${NEWT_ID}
+      - NEWT_SECRET=${NEWT_SECRET}
+    restart: unless-stopped
