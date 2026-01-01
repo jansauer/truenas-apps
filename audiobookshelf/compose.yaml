@@ -1,0 +1,17 @@
+services:
+  web:
+    image: ghcr.io/advplyr/audiobookshelf:2.32.1
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - /mnt/space/media/Audiobooks:/audiobooks
+      - /mnt/applications/audiobookshelf/podcasts:/podcasts
+      - /mnt/applications/audiobookshelf/config:/config
+      - /mnt/applications/audiobookshelf/metadata:/metadata
+    networks:
+      - newt_default
+    restart: unless-stopped
+
+networks:
+  newt_default:
+    external: true
