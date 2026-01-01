@@ -12,14 +12,9 @@ services:
       - /etc/localtime:/etc/localtime:ro
     networks:
       - default
-      - traefik_default
+      - newt_default
     healthcheck:
       disable: true
-    labels:
-      traefik.enable: true
-      traefik.http.routers.immich.entrypoints: websecure
-      traefik.http.routers.immich.rule: Host(`${DOMAIN}`)
-      traefik.http.services.immich.loadbalancer.server.port: 2283
     restart: always
     depends_on:
       - postgres
@@ -54,5 +49,5 @@ services:
     restart: unless-stopped
 
 networks:
-  traefik_default:
+  newt_default:
     external: true
