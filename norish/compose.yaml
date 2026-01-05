@@ -1,0 +1,66 @@
+services:
+  server:
+    image: norishapp/norish:v0.14.1-beta
+    user: "1000:1000"
+    environment:
+      AUTH_URL: https://${DOMAIN}
+      DATABASE_URL: postgres://norish:norish@postgres:5432/norish
+      MASTER_KEY: ${MASTER_KEY}
+      REDIS_URL: redis://valkey:6379
+      CHROME_WS_ENDPOINT: ws://chrome:3000
+      # Disable local login
+      PASSWORD_AUTH_ENABLED: false
+      # Enable OIDC
+      OIDC_NAME: Pocket ID
+      OIDC_ISSUER: ${OIDC_ISSUER}
+      OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
+      OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
+    volumes:
+      - /mnt/applications/norish/uploads:/app/uploads
+    networks:
+      - default
+      - newt_default
+    healthcheck:
+      disable: true
+    labels:
+      - pangolin.proxy-resources.norish.name=Norish
+      - pangolin.proxy-resources.norish.full-domain=${DOMAIN}
+      - pangolin.proxy-resources.norish.protocol=http
+      - pangolin.proxy-resources.norish.auth.sso-enabled=false
+      - pangolin.proxy-resources.norish.targets[0].method=http
+      - pangolin.proxy-resources.norish.targets[0].port=3000
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - valkey
+
+  postgres:
+    image: postgres:18.1-alpine3.23
+    environment:
+      POSTGRES_DB: norish
+      POSTGRES_USER: norish
+      POSTGRES_PASSWORD: norish
+    volumes:
+      - /mnt/applications/norish/postgres:/var/lib/postgresql/18/docker
+    restart: unless-stopped
+
+  valkey:
+    image: valkey/valkey:9.0.1-alpine
+    volumes:
+      - /mnt/applications/norish/valkey:/data
+    restart: unless-stopped
+
+  chrome:
+    image: zenika/alpine-chrome:124
+    restart: unless-stopped
+    command:
+      - "--no-sandbox"
+      - "--disable-gpu"
+      - "--disable-dev-shm-usage"
+      - "--remote-debugging-address=0.0.0.0"
+      - "--remote-debugging-port=3000"
+      - "--headless"
+
+networks:
+  newt_default:
+    external: true
