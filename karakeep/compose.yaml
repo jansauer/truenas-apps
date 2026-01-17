@@ -3,18 +3,30 @@ services:
     image: ghcr.io/karakeep-app/karakeep:0.30.0
     environment:
       DATA_DIR: /data
+      NEXTAUTH_URL: "https://${DOMAIN}"
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
       MEILI_ADDR: http://meilisearch:7700
       MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
-      BROWSER_WEB_URL: http://chrome:9222
-      MAX_ASSET_SIZE_MB: 200
       DISABLE_NEW_RELEASE_CHECK: "true"
+      MAX_ASSET_SIZE_MB: 200
+      # https://docs.karakeep.app/configuration#authentication--signup
       DISABLE_SIGNUPS: "true"
+      DISABLE_PASSWORD_AUTH: "true"
+      OAUTH_PROVIDER_NAME: "Pocket ID"
+      OAUTH_WELLKNOWN_URL: "${OIDC_ISSUER}/.well-known/openid-configuration"
+      OAUTH_CLIENT_ID: ${OIDC_CLIENT_ID}
+      OAUTH_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
+      OAUTH_ALLOW_DANGEROUS_EMAIL_ACCOUNT_LINKING: "true"
+      # https://docs.karakeep.app/configuration#inference-configs-for-automatic-tagging
       OPENAI_API_KEY: ${OPENAI_API_KEY}
+      # https://docs.karakeep.app/configuration#crawler-configs
+      BROWSER_WEB_URL: http://chrome:9222
       CRAWLER_FULL_PAGE_SCREENSHOT: "true"
       CRAWLER_FULL_PAGE_ARCHIVE: "true"
       CRAWLER_VIDEO_DOWNLOAD: "true"
       CRAWLER_VIDEO_DOWNLOAD_MAX_SIZE: "-1"
+      # https://docs.karakeep.app/configuration#proxy-configuration
+      CRAWLER_ALLOWED_INTERNAL_HOSTNAMES: "."
     volumes:
       - /mnt/applications/karakeep/data:/data
     networks:
