@@ -1,6 +1,6 @@
 # Audiobookshelf
 
-Manage and enjoy audiobook.
+Manage and enjoy audiobooks.
 
 - https://www.audiobookshelf.org/
 - https://github.com/advplyr/audiobookshelf

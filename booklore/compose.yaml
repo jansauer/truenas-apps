@@ -1,0 +1,45 @@
+services:
+  booklore:
+    image: ghcr.io/booklore-app/booklore:v1.17.0
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - DATABASE_URL=jdbc:mariadb://mariadb:3306/booklore
+      - DATABASE_USERNAME=booklore
+      - DATABASE_PASSWORD=booklore
+      - SWAGGER_ENABLED=false
+      - TZ=Etc/UTC
+    volumes:
+      - /mnt/applications/booklore/data:/app/data
+      - /mnt/applications/booklore/books:/books
+    networks:
+      - default
+      - newt_default
+    labels:
+      - pangolin.proxy-resources.booklore.name=Booklore
+      - pangolin.proxy-resources.booklore.full-domain=${DOMAIN}
+      - pangolin.proxy-resources.booklore.protocol=http
+      - pangolin.proxy-resources.booklore.auth.sso-enabled=true
+      - pangolin.proxy-resources.booklore.targets[0].method=http
+      - pangolin.proxy-resources.booklore.targets[0].port=6060
+    restart: unless-stopped
+
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:11.4.5
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=super_secure_password
+      - MYSQL_DATABASE=booklore
+      - MYSQL_USER=booklore
+      - MYSQL_PASSWORD=booklore
+      - TZ=Etc/UTC
+    volumes:
+      - /mnt/applications/booklore/mariadb:/config
+    restart: unless-stopped
+    healthcheck:
+      disable: true
+
+networks:
+  newt_default:
+    external: true
