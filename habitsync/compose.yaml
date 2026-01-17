@@ -15,6 +15,13 @@ services:
       - newt_default
     healthcheck:
       disable: true
+    labels:
+      - pangolin.proxy-resources.habitsync.name=HabitSync
+      - pangolin.proxy-resources.habitsync.full-domain=${DOMAIN}
+      - pangolin.proxy-resources.habitsync.protocol=http
+      - pangolin.proxy-resources.habitsync.auth.sso-enabled=false
+      - pangolin.proxy-resources.habitsync.targets[0].method=http
+      - pangolin.proxy-resources.habitsync.targets[0].port=6842
     restart: unless-stopped
 
 networks:
