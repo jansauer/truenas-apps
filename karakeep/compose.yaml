@@ -31,13 +31,19 @@ services:
       - /mnt/applications/karakeep/data:/data
     networks:
       - default
-      - traefik_default
+      - newt_default
     healthcheck:
       disable: true
     labels:
-      traefik.enable: true
-      traefik.http.routers.karakeep.entrypoints: websecure
-      traefik.http.routers.karakeep.rule: Host(`${DOMAIN}`)
+      - pangolin.proxy-resources.karakeep.name=Karakeep
+      - pangolin.proxy-resources.karakeep.full-domain=${DOMAIN}
+      - pangolin.proxy-resources.karakeep.protocol=http
+      - pangolin.proxy-resources.karakeep.auth.sso-enabled=true
+      - pangolin.proxy-resources.karakeep.targets[0].method=http
+      - pangolin.proxy-resources.karakeep.targets[0].port=3000
+      - pangolin.proxy-resources.karakeep.rules[0].action=allow
+      - pangolin.proxy-resources.karakeep.rules[0].match=path
+      - pangolin.proxy-resources.karakeep.rules[0].value=/api/*
     restart: unless-stopped
 
   chrome:
@@ -61,5 +67,5 @@ services:
     restart: unless-stopped
 
 networks:
-  traefik_default:
+  newt_default:
     external: true
