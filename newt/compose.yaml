@@ -1,6 +1,6 @@
 services:
   newt:
-    image: ghcr.io/fosrl/newt:1.8.1
+    image: ghcr.io/fosrl/newt:1.9.0
     container_name: newt
     environment:
       - PANGOLIN_ENDPOINT=${PANGOLIN_ENDPOINT}
