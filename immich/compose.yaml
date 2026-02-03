@@ -43,7 +43,7 @@ services:
     restart: always
 
   valkey:
-    image: valkey/valkey:9.0.1
+    image: valkey/valkey:9.0.2
     volumes:
       - /mnt/applications/immich/valkey:/data
     restart: unless-stopped

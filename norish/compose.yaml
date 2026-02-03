@@ -45,7 +45,7 @@ services:
     restart: unless-stopped
 
   valkey:
-    image: valkey/valkey:9.0.1-alpine
+    image: valkey/valkey:9.0.2-alpine
     volumes:
       - /mnt/applications/norish/valkey:/data
     restart: unless-stopped
