@@ -36,7 +36,7 @@ services:
       - valkey
 
   postgres:
-    image: postgres:18.1-alpine3.23
+    image: postgres:18.2-alpine3.23
     shm_size: 256mb
     environment:
       POSTGRES_DB: norish
