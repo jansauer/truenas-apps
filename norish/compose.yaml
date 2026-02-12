@@ -1,9 +1,9 @@
 services:
   server:
-    image: norishapp/norish:v0.15.6-beta
+    image: norishapp/norish:v0.16.0-beta
     user: "1000:1000"
     environment:
-      AUTH_URL: https://${DOMAIN}
+      AUTH_URL: https://norish.${DOMAIN}
       DATABASE_URL: postgres://norish:norish@postgres:5432/norish
       MASTER_KEY: ${MASTER_KEY}
       REDIS_URL: redis://valkey:6379
@@ -12,11 +12,12 @@ services:
       PASSWORD_AUTH_ENABLED: false
       # Enable OIDC
       OIDC_NAME: Pocket ID
-      OIDC_ISSUER: ${OIDC_ISSUER}
+      OIDC_ISSUER: ${OIDC_ISSUER_URL}
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
       OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
     volumes:
       - /mnt/applications/norish/uploads:/app/uploads
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - default
       - newt_default
@@ -24,9 +25,9 @@ services:
       disable: true
     labels:
       - pangolin.proxy-resources.norish.name=Norish
-      - pangolin.proxy-resources.norish.full-domain=${DOMAIN}
+      - pangolin.proxy-resources.norish.full-domain=norish.${DOMAIN}
       - pangolin.proxy-resources.norish.protocol=http
-      - pangolin.proxy-resources.norish.auth.sso-enabled=false
+      - pangolin.proxy-resources.norish.auth.sso-enabled=true
       - pangolin.proxy-resources.norish.targets[0].method=http
       - pangolin.proxy-resources.norish.targets[0].port=3000
     restart: unless-stopped
@@ -36,6 +37,7 @@ services:
 
   postgres:
     image: postgres:18.1-alpine3.23
+    shm_size: 256mb
     environment:
       POSTGRES_DB: norish
       POSTGRES_USER: norish
@@ -45,7 +47,7 @@ services:
     restart: unless-stopped
 
   valkey:
-    image: valkey/valkey:9.0.1-alpine
+    image: valkey/valkey:9.0.2-alpine
     volumes:
       - /mnt/applications/norish/valkey:/data
     restart: unless-stopped

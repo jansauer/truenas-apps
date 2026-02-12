@@ -3,7 +3,7 @@ services:
     image: ghcr.io/karakeep-app/karakeep:0.30.0
     environment:
       DATA_DIR: /data
-      NEXTAUTH_URL: "https://${DOMAIN}"
+      NEXTAUTH_URL: "https://karakeep.${DOMAIN}"
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
       MEILI_ADDR: http://meilisearch:7700
       MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
@@ -13,7 +13,7 @@ services:
       DISABLE_SIGNUPS: "true"
       DISABLE_PASSWORD_AUTH: "true"
       OAUTH_PROVIDER_NAME: "Pocket ID"
-      OAUTH_WELLKNOWN_URL: "${OIDC_ISSUER}/.well-known/openid-configuration"
+      OAUTH_WELLKNOWN_URL: "${OIDC_ISSUER_URL}/.well-known/openid-configuration"
       OAUTH_CLIENT_ID: ${OIDC_CLIENT_ID}
       OAUTH_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
       OAUTH_ALLOW_DANGEROUS_EMAIL_ACCOUNT_LINKING: "true"
@@ -25,10 +25,9 @@ services:
       CRAWLER_FULL_PAGE_ARCHIVE: "true"
       CRAWLER_VIDEO_DOWNLOAD: "true"
       CRAWLER_VIDEO_DOWNLOAD_MAX_SIZE: "-1"
-      # https://docs.karakeep.app/configuration#proxy-configuration
-      CRAWLER_ALLOWED_INTERNAL_HOSTNAMES: "."
     volumes:
       - /mnt/applications/karakeep/data:/data
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - default
       - newt_default
@@ -36,7 +35,7 @@ services:
       disable: true
     labels:
       - pangolin.proxy-resources.karakeep.name=Karakeep
-      - pangolin.proxy-resources.karakeep.full-domain=${DOMAIN}
+      - pangolin.proxy-resources.karakeep.full-domain=karakeep.${DOMAIN}
       - pangolin.proxy-resources.karakeep.protocol=http
       - pangolin.proxy-resources.karakeep.auth.sso-enabled=true
       - pangolin.proxy-resources.karakeep.targets[0].method=http

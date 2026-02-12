@@ -1,9 +1,11 @@
 services:
   newt:
-    image: ghcr.io/fosrl/newt:1.8.1
-    container_name: newt
+    image: ghcr.io/fosrl/newt:1.9.0
     environment:
       - PANGOLIN_ENDPOINT=${PANGOLIN_ENDPOINT}
       - NEWT_ID=${NEWT_ID}
       - NEWT_SECRET=${NEWT_SECRET}
+      - DOCKER_SOCKET=unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: unless-stopped

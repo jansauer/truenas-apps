@@ -1,17 +1,26 @@
 services:
   web:
     image: ghcr.io/advplyr/audiobookshelf:2.32.1
-    environment:
-      - TZ=Europe/Berlin
     volumes:
       - /mnt/space/media/Audiobooks:/audiobooks
       - /mnt/applications/audiobookshelf/podcasts:/podcasts
       - /mnt/applications/audiobookshelf/config:/config
       - /mnt/applications/audiobookshelf/metadata:/metadata
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - newt_default
+    labels:
+      - pangolin.proxy-resources.audiobookshelf.name=Audiobookshelf
+      - pangolin.proxy-resources.audiobookshelf.full-domain=audiobookshelf.${DOMAIN}
+      - pangolin.proxy-resources.audiobookshelf.protocol=http
+      - pangolin.proxy-resources.audiobookshelf.auth.sso-enabled=true
+      - pangolin.proxy-resources.audiobookshelf.targets[0].method=http
+      - pangolin.proxy-resources.audiobookshelf.targets[0].port=6060
     restart: unless-stopped
 
 networks:
+  default:
+    external: true
+    name: none
   newt_default:
     external: true

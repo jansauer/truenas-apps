@@ -1,0 +1,26 @@
+services:
+  app:
+    image: codeberg.org/forgejo/forgejo:14.0.2
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    volumes:
+      - /mnt/applications/forgejo:/data
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - newt_default
+    labels:
+      - pangolin.proxy-resources.forgejo.name=Forgejo
+      - pangolin.proxy-resources.forgejo.full-domain=forgejo.${DOMAIN}
+      - pangolin.proxy-resources.forgejo.protocol=http
+      - pangolin.proxy-resources.forgejo.auth.sso-enabled=false
+      - pangolin.proxy-resources.forgejo.targets[0].method=http
+      - pangolin.proxy-resources.forgejo.targets[0].port=3000
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: none
+  newt_default:
+    external: true

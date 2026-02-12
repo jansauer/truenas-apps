@@ -1,29 +1,32 @@
 services:
   web:
-    image: ghcr.io/jofoerster/habitsync:0.18.0
-    user: "6842:6842"
+    image: ghcr.io/jofoerster/habitsync:0.18.1
     environment:
       - BASE_URL=https://${DOMAIN}/
-      - APP_SECURITY_ISSUERS_POCKETID_URL=${POCKETID_URL}
+      - APP_SECURITY_ISSUERS_POCKETID_URL=${OIDC_ISSUER_URL}
       - APP_SECURITY_ISSUERS_POCKETID_CLIENT-ID=${POCKETID_CLIENT_ID}
       - APP_SECURITY_ISSUERS_POCKETID_NEEDS-CONFIRMATION=false
       - JWT_SECRET=${JWT_SECRET}
       - SPRING_MAIL_ENABLED=false
     volumes:
       - /mnt/applications/habitsync:/data
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - newt_default
     healthcheck:
       disable: true
     labels:
       - pangolin.proxy-resources.habitsync.name=HabitSync
-      - pangolin.proxy-resources.habitsync.full-domain=${DOMAIN}
+      - pangolin.proxy-resources.habitsync.full-domain=habitsync.${DOMAIN}
       - pangolin.proxy-resources.habitsync.protocol=http
-      - pangolin.proxy-resources.habitsync.auth.sso-enabled=false
+      - pangolin.proxy-resources.habitsync.auth.sso-enabled=true
       - pangolin.proxy-resources.habitsync.targets[0].method=http
       - pangolin.proxy-resources.habitsync.targets[0].port=6842
     restart: unless-stopped
 
 networks:
+  default:
+    external: true
+    name: none
   newt_default:
     external: true

@@ -4,16 +4,12 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=EUROPE/BERLIN
       - VERSION=docker
     volumes:
       - /mnt/applications/plex:/config
       - /mnt/space/media:/media:ro
+      - /etc/localtime:/etc/localtime:ro
     devices:
       - /dev/dri:/dev/dri
     network_mode: host
     restart: unless-stopped
-
-networks:
-  traefik_default:
-    external: true

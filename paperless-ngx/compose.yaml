@@ -1,29 +1,36 @@
 services:
   webserver:
-    image: ghcr.io/paperless-ngx/paperless-ngx:2.20.3
+    image: ghcr.io/paperless-ngx/paperless-ngx:2.20.6
     environment:
       PAPERLESS_REDIS: redis://valkey:6379
       PAPERLESS_DBHOST: postgres
       PAPERLESS_SECRET_KEY: ${SECRET_KEY}
       PAPERLESS_OCR_LANGUAGE: deu
-      PAPERLESS_URL: https://${DOMAIN}
+      PAPERLESS_URL: https://paperless.${DOMAIN}
     volumes:
       - /mnt/applications/paperless-ngx/data:/usr/src/paperless/data
       - /mnt/applications/paperless-ngx/media:/usr/src/paperless/media
+      - /etc/localtime:/etc/localtime:ro
     networks:
-      - traefik_default
+      - newt_default
       - default
     healthcheck:
       disable: true
     labels:
-      traefik.enable: true
-      traefik.http.routers.paperless.entrypoints: websecure
-      traefik.http.routers.paperless.rule: Host(`${DOMAIN}`)
+      - pangolin.proxy-resources.paperless.name=Paperless
+      - pangolin.proxy-resources.paperless.full-domain=paperless.${DOMAIN}
+      - pangolin.proxy-resources.paperless.protocol=http
+      - pangolin.proxy-resources.paperless.auth.sso-enabled=true
+      - pangolin.proxy-resources.paperless.targets[0].method=http
+      - pangolin.proxy-resources.paperless.targets[0].port=8000
     restart: unless-stopped
+    depends_on:
+      - postgres
+      - valkey
 
   postgres:
     image: postgres:18.1-alpine3.23
-    shm_size: 512mb
+    shm_size: 256mb
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
@@ -33,24 +40,11 @@ services:
     restart: unless-stopped
 
   valkey:
-    image: valkey/valkey:8.0.1-alpine3.20
+    image: valkey/valkey:9.0.2-alpine
     volumes:
       - /mnt/applications/paperless-ngx/valkey:/data
     restart: unless-stopped
 
-#  ai:
-#    image: clusterzx/paperless-ai
-#    volumes:
-#      - /mnt/applications/paperless-ngx/ai:/app/data
-#    networks:
-#      - traefik_default
-#      - default
-#    labels:
-#      traefik.enable: true
-#      traefik.http.routers.paperless-ai.entrypoints: websecure
-#      traefik.http.routers.paperless-ai.rule: Host(`${DOMAIN_AI}`)
-#    restart: unless-stopped
-
 networks:
-  traefik_default:
+  newt_default:
     external: true

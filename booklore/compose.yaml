@@ -1,6 +1,6 @@
 services:
   booklore:
-    image: ghcr.io/booklore-app/booklore:v1.17.0
+    image: ghcr.io/booklore-app/booklore:v1.18.5
     environment:
       - PUID=1000
       - PGID=1000
@@ -8,16 +8,16 @@ services:
       - DATABASE_USERNAME=booklore
       - DATABASE_PASSWORD=booklore
       - SWAGGER_ENABLED=false
-      - TZ=Etc/UTC
     volumes:
       - /mnt/applications/booklore/data:/app/data
       - /mnt/applications/booklore/books:/books
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - default
       - newt_default
     labels:
       - pangolin.proxy-resources.booklore.name=Booklore
-      - pangolin.proxy-resources.booklore.full-domain=${DOMAIN}
+      - pangolin.proxy-resources.booklore.full-domain=booklore.${DOMAIN}
       - pangolin.proxy-resources.booklore.protocol=http
       - pangolin.proxy-resources.booklore.auth.sso-enabled=true
       - pangolin.proxy-resources.booklore.targets[0].method=http
@@ -33,12 +33,12 @@ services:
       - MYSQL_DATABASE=booklore
       - MYSQL_USER=booklore
       - MYSQL_PASSWORD=booklore
-      - TZ=Etc/UTC
     volumes:
       - /mnt/applications/booklore/mariadb:/config
-    restart: unless-stopped
+      - /etc/localtime:/etc/localtime:ro
     healthcheck:
       disable: true
+    restart: unless-stopped
 
 networks:
   newt_default:
