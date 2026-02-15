@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/jofoerster/habitsync:0.18.1
+    image: ghcr.io/jofoerster/habitsync:0.18.2
     environment:
       - BASE_URL=https://${DOMAIN}/
       - APP_SECURITY_ISSUERS_POCKETID_URL=${OIDC_ISSUER_URL}
