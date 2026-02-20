@@ -15,7 +15,7 @@ services:
       - pangolin.proxy-resources.audiobookshelf.protocol=http
       - pangolin.proxy-resources.audiobookshelf.auth.sso-enabled=true
       - pangolin.proxy-resources.audiobookshelf.targets[0].method=http
-      - pangolin.proxy-resources.audiobookshelf.targets[0].port=6060
+      - pangolin.proxy-resources.audiobookshelf.targets[0].port=80
     restart: unless-stopped
 
 networks:
