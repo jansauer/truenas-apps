@@ -7,7 +7,7 @@ Cool app's that I self-host on my TrueNAS server.
 - [Immich](./immich)
 - [Karakeep](./karakeep)
 - [Mealie](./mealie)
-- [Newt](./newt))
+- [Newt](./newt)
 - [Paperless-ngx](./paperless-ngx)
 - [Plex](./plex)
 
