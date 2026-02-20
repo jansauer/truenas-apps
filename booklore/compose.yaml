@@ -22,6 +22,12 @@ services:
       - pangolin.proxy-resources.booklore.auth.sso-enabled=true
       - pangolin.proxy-resources.booklore.targets[0].method=http
       - pangolin.proxy-resources.booklore.targets[0].port=6060
+      - pangolin.proxy-resources.booklore.rules[0].action=allow
+      - pangolin.proxy-resources.booklore.rules[0].match=path
+      - pangolin.proxy-resources.booklore.rules[0].value=/api/*
+      - pangolin.proxy-resources.booklore.rules[1].action=allow
+      - pangolin.proxy-resources.booklore.rules[1].match=path
+      - pangolin.proxy-resources.booklore.rules[1].value=/ws
     restart: unless-stopped
 
   mariadb:
