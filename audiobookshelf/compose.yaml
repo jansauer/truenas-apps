@@ -16,6 +16,21 @@ services:
       - pangolin.proxy-resources.audiobookshelf.auth.sso-enabled=true
       - pangolin.proxy-resources.audiobookshelf.targets[0].method=http
       - pangolin.proxy-resources.audiobookshelf.targets[0].port=80
+      - pangolin.proxy-resources.audiobookshelf.rules[0].action=allow
+      - pangolin.proxy-resources.audiobookshelf.rules[0].match=path
+      - pangolin.proxy-resources.audiobookshelf.rules[0].value=/auth/*
+      - pangolin.proxy-resources.audiobookshelf.rules[1].action=allow
+      - pangolin.proxy-resources.audiobookshelf.rules[1].match=path
+      - pangolin.proxy-resources.audiobookshelf.rules[1].value=/api/*
+      - pangolin.proxy-resources.audiobookshelf.rules[2].action=allow
+      - pangolin.proxy-resources.audiobookshelf.rules[2].match=path
+      - pangolin.proxy-resources.audiobookshelf.rules[2].value=/socket.io/
+      - pangolin.proxy-resources.audiobookshelf.rules[3].action=allow
+      - pangolin.proxy-resources.audiobookshelf.rules[3].match=path
+      - pangolin.proxy-resources.audiobookshelf.rules[3].value=/ping
+      - pangolin.proxy-resources.audiobookshelf.rules[4].action=allow
+      - pangolin.proxy-resources.audiobookshelf.rules[4].match=path
+      - pangolin.proxy-resources.audiobookshelf.rules[4].value=/status
     restart: unless-stopped
 
 networks:
