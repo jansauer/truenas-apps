@@ -1,5 +1,5 @@
 services:
-  web:
+  app:
     image: ghcr.io/advplyr/audiobookshelf:2.32.1
     volumes:
       - /mnt/space/media/Audiobooks:/audiobooks
@@ -8,14 +8,20 @@ services:
       - /mnt/applications/audiobookshelf/metadata:/metadata
       - /etc/localtime:/etc/localtime:ro
     networks:
-      - newt_default
+      newt_default:
+        aliases:
+          - audiobookshelf
     labels:
       - pangolin.proxy-resources.audiobookshelf.name=Audiobookshelf
       - pangolin.proxy-resources.audiobookshelf.full-domain=audiobookshelf.${DOMAIN}
       - pangolin.proxy-resources.audiobookshelf.protocol=http
       - pangolin.proxy-resources.audiobookshelf.auth.sso-enabled=true
       - pangolin.proxy-resources.audiobookshelf.targets[0].method=http
+      - pangolin.proxy-resources.audiobookshelf.targets[0].hostname=audiobookshelf
       - pangolin.proxy-resources.audiobookshelf.targets[0].port=80
+      - pangolin.proxy-resources.audiobookshelf.targets[0].healthcheck.hostname=audiobookshelf
+      - pangolin.proxy-resources.audiobookshelf.targets[0].healthcheck.port=80
+      - pangolin.proxy-resources.audiobookshelf.targets[0].healthcheck.path=/healthcheck
       - pangolin.proxy-resources.audiobookshelf.rules[0].action=allow
       - pangolin.proxy-resources.audiobookshelf.rules[0].match=path
       - pangolin.proxy-resources.audiobookshelf.rules[0].value=/auth/*
