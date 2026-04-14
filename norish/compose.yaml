@@ -1,6 +1,6 @@
 services:
   server:
-    image: norishapp/norish:v0.17.3-beta
+    image: norishapp/norish:v0.18.0-beta
     user: "1000:1000"
     environment:
       AUTH_URL: https://norish.${DOMAIN}
