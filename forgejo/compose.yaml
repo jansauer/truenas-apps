@@ -1,6 +1,6 @@
 services:
   app:
-    image: codeberg.org/forgejo/forgejo:14.0.4
+    image: codeberg.org/forgejo/forgejo:15.0.0
     environment:
       - USER_UID=1000
       - USER_GID=1000
