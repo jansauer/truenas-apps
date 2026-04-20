@@ -31,7 +31,7 @@ services:
     restart: unless-stopped
 
   mariadb:
-    image: lscr.io/linuxserver/mariadb:11.4.9
+    image: lscr.io/linuxserver/mariadb:11.4.10
     environment:
       - PUID=1000
       - PGID=1000
