@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
 
   valkey:
-    image: valkey/valkey:9.0.3-alpine
+    image: valkey/valkey:9.0.4-alpine
     volumes:
       - /mnt/applications/paperless-ngx/valkey:/data
     restart: unless-stopped
