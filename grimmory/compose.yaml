@@ -1,0 +1,57 @@
+services:
+  app:
+    image: ghcr.io/grimmory-tools/grimmory:v3.0.3
+    environment:
+      - USER_ID=1000
+      - GROUP_ID=1000
+      - DATABASE_URL=jdbc:mariadb://mariadb:3306/booklore
+      - DATABASE_USERNAME=booklore
+      - DATABASE_PASSWORD=booklore
+      - SWAGGER_ENABLED=false
+    volumes:
+      - /mnt/applications/grimmory/data:/app/data
+      - /mnt/applications/grimmory/books:/books
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      default:
+      newt_default:
+        aliases:
+          - grimmory
+    labels:
+      - pangolin.proxy-resources.grimmory.name=Grimmory
+      - pangolin.proxy-resources.grimmory.full-domain=grimmory.${DOMAIN}
+      - pangolin.proxy-resources.grimmory.protocol=http
+      - pangolin.proxy-resources.grimmory.auth.sso-enabled=true
+      - pangolin.proxy-resources.grimmory.targets[0].method=http
+      - pangolin.proxy-resources.grimmory.targets[0].hostname=grimmory
+      - pangolin.proxy-resources.grimmory.targets[0].port=6060
+      - pangolin.proxy-resources.grimmory.targets[0].healthcheck.hostname=grimmory
+      - pangolin.proxy-resources.grimmory.targets[0].healthcheck.port=6060
+      - pangolin.proxy-resources.grimmory.targets[0].healthcheck.path=/api/v1/healthcheck
+      - pangolin.proxy-resources.grimmory.rules[0].action=allow
+      - pangolin.proxy-resources.grimmory.rules[0].match=path
+      - pangolin.proxy-resources.grimmory.rules[0].value=/api/*
+      - pangolin.proxy-resources.grimmory.rules[1].action=allow
+      - pangolin.proxy-resources.grimmory.rules[1].match=path
+      - pangolin.proxy-resources.grimmory.rules[1].value=/ws
+    restart: unless-stopped
+
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:11.4.9
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=super_secure_password
+      - MYSQL_DATABASE=booklore
+      - MYSQL_USER=booklore
+      - MYSQL_PASSWORD=booklore
+    volumes:
+      - /mnt/applications/grimmory/mariadb:/config
+      - /etc/localtime:/etc/localtime:ro
+    healthcheck:
+      disable: true
+    restart: unless-stopped
+
+networks:
+  newt_default:
+    external: true

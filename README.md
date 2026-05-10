@@ -3,6 +3,7 @@
 Cool app's that I self-host on my TrueNAS server.
 
 - [Audiobookshelf](./audiobookshelf)
+- [Grimmory](./grimmory)
 - [Immich](./immich)
 - [Karakeep](./karakeep)
 - [Newt](./newt)
