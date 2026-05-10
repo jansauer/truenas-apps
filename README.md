@@ -3,7 +3,6 @@
 Cool app's that I self-host on my TrueNAS server.
 
 - [Audiobookshelf](./audiobookshelf)
-- [HabitSync](./habitsync)
 - [Immich](./immich)
 - [Karakeep](./karakeep)
 - [Newt](./newt)
@@ -21,7 +20,8 @@ Cool app's that I self-host on my TrueNAS server.
 - [Bright Sky](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/7552d2d74d24debd4fc3096343638fe65d27d6b8/brightsky)
 - [Jellyfin](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/7552d2d74d24debd4fc3096343638fe65d27d6b8/jellyfin)
 - [Overpass](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/7552d2d74d24debd4fc3096343638fe65d27d6b8/overpass)
-- [Norish](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/de7a9039caa17d0423edae57f99263709e74f2cf/norish/README.md)
+- [Norish](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/de7a9039caa17d0423edae57f99263709e74f2cf/norish/)
+- [HabitSync](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/de7a9039caa17d0423edae57f99263709e74f2cf/habitsync)
 
 ## Quickstart 
 
