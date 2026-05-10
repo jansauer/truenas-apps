@@ -1,6 +1,6 @@
 services:
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.9.4
+    image: ghcr.io/open-webui/open-webui:v0.9.5
     environment:
       WEBUI_SECRET_KEY: ${WEBUI_SECRET_KEY}
       WEBUI_URL: "https://openwebui.${DOMAIN}"
