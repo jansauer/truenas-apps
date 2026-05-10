@@ -11,11 +11,30 @@ services:
       - /mnt/applications/immich/upload:/data
       - /etc/localtime:/etc/localtime:ro
     networks:
-      - default
-      - newt_default
+      default:
+      newt_default:
+        aliases:
+          - immich
     healthcheck:
       disable: true
-    restart: always
+    restart: unless-stopped
+    labels:
+      - pangolin.proxy-resources.immich.name=Immich
+      - pangolin.proxy-resources.immich.full-domain=immich.${DOMAIN}
+      - pangolin.proxy-resources.immich.protocol=http
+      - pangolin.proxy-resources.immich.auth.sso-enabled=true
+      - pangolin.proxy-resources.immich.targets[0].method=http
+      - pangolin.proxy-resources.immich.targets[0].hostname=immich
+      - pangolin.proxy-resources.immich.targets[0].port=2283
+      - pangolin.proxy-resources.immich.targets[0].healthcheck.hostname=immich
+      - pangolin.proxy-resources.immich.targets[0].healthcheck.port=2283
+      - pangolin.proxy-resources.immich.targets[0].healthcheck.path=/api/server/ping
+      - pangolin.proxy-resources.immich.rules[0].action=allow
+      - pangolin.proxy-resources.immich.rules[0].match=path
+      - pangolin.proxy-resources.immich.rules[0].value=/.well-known/immich
+      - pangolin.proxy-resources.immich.rules[1].action=allow
+      - pangolin.proxy-resources.immich.rules[1].match=path
+      - pangolin.proxy-resources.immich.rules[1].value=/api/*
     depends_on:
       - postgres
       - valkey
@@ -26,7 +45,7 @@ services:
       - /mnt/applications/immich/model-cache:/cache
     healthcheck:
       disable: true
-    restart: always
+    restart: unless-stopped
 
   postgres:
     image: ghcr.io/immich-app/postgres:16-vectorchord0.4.3-pgvectors0.2.0
@@ -40,7 +59,7 @@ services:
     healthcheck:
       disable: true
     shm_size: 128mb
-    restart: always
+    restart: unless-stopped
 
   valkey:
     image: valkey/valkey:9.0.4-alpine
