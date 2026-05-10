@@ -29,8 +29,10 @@ services:
       - /mnt/applications/karakeep/data:/data
       - /etc/localtime:/etc/localtime:ro
     networks:
-      - default
-      - newt_default
+      default:
+      newt_default:
+        aliases:
+          - karakeep
     healthcheck:
       disable: true
     labels:
@@ -39,7 +41,11 @@ services:
       - pangolin.proxy-resources.karakeep.protocol=http
       - pangolin.proxy-resources.karakeep.auth.sso-enabled=true
       - pangolin.proxy-resources.karakeep.targets[0].method=http
+      - pangolin.proxy-resources.karakeep.targets[0].hostname=karakeep
       - pangolin.proxy-resources.karakeep.targets[0].port=3000
+      - pangolin.proxy-resources.karakeep.targets[0].healthcheck.hostname=karakeep
+      - pangolin.proxy-resources.karakeep.targets[0].healthcheck.port=3000
+      - pangolin.proxy-resources.karakeep.targets[0].healthcheck.path=/api/health
       - pangolin.proxy-resources.karakeep.rules[0].action=allow
       - pangolin.proxy-resources.karakeep.rules[0].match=path
       - pangolin.proxy-resources.karakeep.rules[0].value=/api/*
