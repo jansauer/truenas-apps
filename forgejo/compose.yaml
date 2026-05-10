@@ -8,15 +8,21 @@ services:
       - /mnt/applications/forgejo:/data
       - /etc/localtime:/etc/localtime:ro
     networks:
-      - default
-      - newt_default
+      default:
+      newt_default:
+        aliases:
+          - forgejo
     labels:
       - pangolin.proxy-resources.forgejo.name=Forgejo
       - pangolin.proxy-resources.forgejo.full-domain=forgejo.${DOMAIN}
       - pangolin.proxy-resources.forgejo.protocol=http
       - pangolin.proxy-resources.forgejo.auth.sso-enabled=false
       - pangolin.proxy-resources.forgejo.targets[0].method=http
+      - pangolin.proxy-resources.forgejo.targets[0].hostname=forgejo
       - pangolin.proxy-resources.forgejo.targets[0].port=3000
+      - pangolin.proxy-resources.forgejo.targets[0].healthcheck.hostname=forgejo
+      - pangolin.proxy-resources.forgejo.targets[0].healthcheck.port=3000
+      - pangolin.proxy-resources.forgejo.targets[0].healthcheck.path=/api/healthz
     restart: unless-stopped
 
   runner:
