@@ -7,6 +7,7 @@ Cool app's that I self-host on my TrueNAS server.
 - [Immich](./immich)
 - [Karakeep](./karakeep)
 - [Newt](./newt)
+- [Overpass](./overpass)
 - [Paperless-ngx](./paperless-ngx)
 - [Plex](./plex)
 
@@ -20,7 +21,6 @@ Cool app's that I self-host on my TrueNAS server.
 - [Traefik](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/03aca843f85c5819abc36bddcfb86e48df1e30fb/traefik)
 - [Bright Sky](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/7552d2d74d24debd4fc3096343638fe65d27d6b8/brightsky)
 - [Jellyfin](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/7552d2d74d24debd4fc3096343638fe65d27d6b8/jellyfin)
-- [Overpass](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/7552d2d74d24debd4fc3096343638fe65d27d6b8/overpass)
 - [Norish](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/de7a9039caa17d0423edae57f99263709e74f2cf/norish/)
 - [HabitSync](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/de7a9039caa17d0423edae57f99263709e74f2cf/habitsync)
 
