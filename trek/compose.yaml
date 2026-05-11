@@ -1,0 +1,33 @@
+services:
+  app:
+    image: mauriceboe/trek:3.0.18
+    environment:
+      - ENCRYPTION_KEY=${TREK_ENCRYPTION_KEY}
+      - APP_URL=https://trek.${DOMAIN}
+      - OIDC_ISSUER=${OIDC_ISSUER_URL}
+      - OIDC_CLIENT_ID=${TREK_OIDC_CLIENT_ID}
+      - OIDC_CLIENT_SECRET=${TREK_OIDC_CLIENT_SECRET}
+      - OIDC_DISPLAY_NAME=PocketID
+      - OIDC_ONLY=true
+      - OIDC_SCOPE=openid email profile groups
+      - OIDC_ADMIN_VALUE=admins
+      - TRUST_PROXY=1
+      - LOG_LEVEL=info
+      - TZ=Europe/Berlin
+    volumes:
+      - /mnt/applications/trek/data:/app/data
+      - /mnt/applications/trek/uploads:/app/uploads
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    labels:
+      - pangolin.proxy-resources.trek.name=Trek
+      - pangolin.proxy-resources.trek.full-domain=trek.${DOMAIN}
+      - pangolin.proxy-resources.trek.protocol=http
+      - pangolin.proxy-resources.trek.auth.sso-enabled=true
+      - pangolin.proxy-resources.trek.targets[0].method=http
+      - pangolin.proxy-resources.trek.targets[0].port=3000
+
+networks:
+  default:
+    external: true
+    name: newt_default

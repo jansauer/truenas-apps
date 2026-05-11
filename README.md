@@ -10,6 +10,7 @@ Cool app's that I self-host on my TrueNAS server.
 - [Overpass](./overpass)
 - [Paperless-ngx](./paperless-ngx)
 - [Plex](./plex)
+- [Trek](./trek)
 
 ## Things I tried but no longer use
 
