@@ -23,6 +23,7 @@ Cool app's that I self-host on my TrueNAS server.
 - [Jellyfin](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/7552d2d74d24debd4fc3096343638fe65d27d6b8/jellyfin)
 - [Norish](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/de7a9039caa17d0423edae57f99263709e74f2cf/norish/)
 - [HabitSync](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/de7a9039caa17d0423edae57f99263709e74f2cf/habitsync)
+- [Open WebUI](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/0929f572029ef40db00f45e3d72eff97f7607a48/openwebui)
 
 ## Quickstart 
 
