@@ -1,6 +1,6 @@
 services:
   app:
-    image: wiktorn/overpass-api:0.7.62.7
+    image: wiktorn/overpass-api:v0.7.62.11
     environment:
       OVERPASS_MODE: clone
       OVERPASS_CLONE_SOURCE: http://dev.overpass-api.de/api_drolbr/
