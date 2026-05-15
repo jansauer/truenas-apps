@@ -4,9 +4,9 @@ services:
     environment:
       DATA_DIR: /data
       NEXTAUTH_URL: "https://karakeep.${DOMAIN}"
-      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_SECRET: ${KARAKEEP_NEXTAUTH_SECRET}
       MEILI_ADDR: http://meilisearch:7700
-      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+      MEILI_MASTER_KEY: ${KARAKEEP_MEILI_MASTER_KEY}
       DISABLE_NEW_RELEASE_CHECK: "true"
       MAX_ASSET_SIZE_MB: 200
       # https://docs.karakeep.app/configuration#authentication--signup
@@ -14,8 +14,8 @@ services:
       DISABLE_PASSWORD_AUTH: "true"
       OAUTH_PROVIDER_NAME: "Pocket ID"
       OAUTH_WELLKNOWN_URL: "${OIDC_ISSUER_URL}/.well-known/openid-configuration"
-      OAUTH_CLIENT_ID: ${OIDC_CLIENT_ID}
-      OAUTH_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
+      OAUTH_CLIENT_ID: ${KARAKEEP_OIDC_CLIENT_ID}
+      OAUTH_CLIENT_SECRET: ${KARAKEEP_OIDC_CLIENT_SECRET}
       OAUTH_ALLOW_DANGEROUS_EMAIL_ACCOUNT_LINKING: "true"
       # https://docs.karakeep.app/configuration#inference-configs-for-automatic-tagging
       OPENAI_API_KEY: ${OPENAI_API_KEY}
@@ -65,7 +65,7 @@ services:
   meilisearch:
     image: getmeili/meilisearch:v1.29.0
     environment:
-      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+      MEILI_MASTER_KEY: ${KARAKEEP_MEILI_MASTER_KEY}
       MEILI_NO_ANALYTICS: "true"
     volumes:
       - /mnt/applications/karakeep/meilisearch:/meili_data

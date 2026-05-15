@@ -2,7 +2,7 @@ services:
   newt:
     image: ghcr.io/fosrl/newt:1.12.5
     environment:
-      - PANGOLIN_ENDPOINT=${PANGOLIN_ENDPOINT}
+      - PANGOLIN_ENDPOINT=${NEWT_PANGOLIN_ENDPOINT}
       - NEWT_ID=${NEWT_ID}
       - NEWT_SECRET=${NEWT_SECRET}
       - DOCKER_SOCKET=unix:///var/run/docker.sock
