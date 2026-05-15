@@ -16,3 +16,5 @@ services:
     healthcheck:
       disable: true
     restart: unless-stopped
+
+x-no-start: true
