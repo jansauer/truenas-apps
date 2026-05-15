@@ -1,0 +1,33 @@
+services:
+  app:
+    image: couchdb:3.5.1
+    environment:
+      COUCHDB_USER: ${COUCHDB_USER}
+      COUCHDB_PASSWORD: ${COUCHDB_PASSWORD}
+    volumes:
+      - /mnt/applications/couchdb/data:/opt/couchdb/data
+      - /mnt/applications/couchdb/etc:/opt/couchdb/etc/local.d
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      default:
+      newt_default:
+        aliases:
+          - couchdb
+    healthcheck:
+      disable: true
+    restart: unless-stopped
+    labels:
+      - pangolin.proxy-resources.couchdb.name=CouchDB
+      - pangolin.proxy-resources.couchdb.full-domain=couchdb.${DOMAIN}
+      - pangolin.proxy-resources.couchdb.protocol=http
+      - pangolin.proxy-resources.couchdb.auth.sso-enabled=false
+      - pangolin.proxy-resources.couchdb.targets[0].method=http
+      - pangolin.proxy-resources.couchdb.targets[0].hostname=couchdb
+      - pangolin.proxy-resources.couchdb.targets[0].port=5984
+      - pangolin.proxy-resources.couchdb.targets[0].healthcheck.hostname=couchdb
+      - pangolin.proxy-resources.couchdb.targets[0].healthcheck.port=5984
+      - pangolin.proxy-resources.couchdb.targets[0].healthcheck.path=/_up
+
+networks:
+  newt_default:
+    external: true
