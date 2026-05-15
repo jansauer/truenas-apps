@@ -4,7 +4,7 @@ services:
     environment:
       PAPERLESS_REDIS: redis://valkey:6379
       PAPERLESS_DBHOST: postgres
-      PAPERLESS_SECRET_KEY: ${SECRET_KEY}
+      PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
       PAPERLESS_OCR_LANGUAGE: deu
       PAPERLESS_URL: https://paperless.${DOMAIN}
     volumes:
