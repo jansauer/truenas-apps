@@ -1,0 +1,29 @@
+name: Deploy Apps
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello:
+    runs-on: docker
+    container:
+      image: cimg/node:26.1.0
+      options: --user root
+    steps:
+      - name: Check out the repository
+        uses: https://data.forgejo.org/actions/checkout@v6.0.2
+
+      - name: Install 1Password CLI
+        uses: https://github.com/1password/install-cli-action@v3.0.0
+
+      - name: Set up Docker Compose
+        uses: https://github.com/docker/setup-compose-action@v2.1.0
+        with:
+          version: v5.1.3
+
+      - name: Run make
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+        run: make
