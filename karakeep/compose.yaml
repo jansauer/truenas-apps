@@ -63,10 +63,11 @@ services:
     restart: unless-stopped
 
   meilisearch:
-    image: getmeili/meilisearch:v1.29.0
+    image: getmeili/meilisearch:v1.30.0
     environment:
       MEILI_MASTER_KEY: ${KARAKEEP_MEILI_MASTER_KEY}
       MEILI_NO_ANALYTICS: "true"
+      MEILI_EXPERIMENTAL_DUMPLESS_UPGRADE: "true"
     volumes:
       - /mnt/applications/karakeep/meilisearch:/meili_data
     restart: unless-stopped
