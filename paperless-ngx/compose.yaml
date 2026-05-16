@@ -19,8 +19,10 @@ services:
       - /mnt/applications/paperless-ngx/media:/usr/src/paperless/media
       - /etc/localtime:/etc/localtime:ro
     networks:
-      - newt_default
-      - default
+      default:
+      newt_default:
+        aliases:
+          - paperless
     healthcheck:
       disable: true
     labels:
@@ -29,7 +31,11 @@ services:
       - pangolin.proxy-resources.paperless.protocol=http
       - pangolin.proxy-resources.paperless.auth.sso-enabled=true
       - pangolin.proxy-resources.paperless.targets[0].method=http
+      - pangolin.proxy-resources.paperless.targets[0].hostname=paperless
       - pangolin.proxy-resources.paperless.targets[0].port=8000
+      - pangolin.proxy-resources.paperless.targets[0].healthcheck.hostname=paperless
+      - pangolin.proxy-resources.paperless.targets[0].healthcheck.port=8000
+      - pangolin.proxy-resources.paperless.targets[0].healthcheck.path=/
     restart: unless-stopped
     depends_on:
       - postgres
