@@ -18,6 +18,12 @@ services:
       - /mnt/applications/trek/data:/app/data
       - /mnt/applications/trek/uploads:/app/uploads
       - /etc/localtime:/etc/localtime:ro
+    networks:
+      default:
+        aliases:
+          - trek
+    healthcheck:
+      disable: true
     restart: unless-stopped
     labels:
       - pangolin.proxy-resources.trek.name=Trek
@@ -25,7 +31,11 @@ services:
       - pangolin.proxy-resources.trek.protocol=http
       - pangolin.proxy-resources.trek.auth.sso-enabled=true
       - pangolin.proxy-resources.trek.targets[0].method=http
+      - pangolin.proxy-resources.trek.targets[0].hostname=trek
       - pangolin.proxy-resources.trek.targets[0].port=3000
+      - pangolin.proxy-resources.trek.targets[0].healthcheck.hostname=trek
+      - pangolin.proxy-resources.trek.targets[0].healthcheck.port=3000
+      - pangolin.proxy-resources.trek.targets[0].healthcheck.path=/api/health
 
 networks:
   default:
