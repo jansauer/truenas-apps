@@ -11,6 +11,7 @@ services:
       newt_default:
         aliases:
           - audiobookshelf
+    restart: unless-stopped
     labels:
       - pangolin.proxy-resources.audiobookshelf.name=Audiobookshelf
       - pangolin.proxy-resources.audiobookshelf.full-domain=audiobookshelf.${DOMAIN}
@@ -37,7 +38,6 @@ services:
       - pangolin.proxy-resources.audiobookshelf.rules[4].action=allow
       - pangolin.proxy-resources.audiobookshelf.rules[4].match=path
       - pangolin.proxy-resources.audiobookshelf.rules[4].value=/status
-    restart: unless-stopped
 
 networks:
   default:

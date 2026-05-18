@@ -12,6 +12,7 @@ services:
       newt_default:
         aliases:
           - forgejo
+    restart: unless-stopped
     labels:
       - pangolin.proxy-resources.forgejo.name=Forgejo
       - pangolin.proxy-resources.forgejo.full-domain=forgejo.${DOMAIN}
@@ -23,7 +24,6 @@ services:
       - pangolin.proxy-resources.forgejo.targets[0].healthcheck.hostname=forgejo
       - pangolin.proxy-resources.forgejo.targets[0].healthcheck.port=3000
       - pangolin.proxy-resources.forgejo.targets[0].healthcheck.path=/api/healthz
-    restart: unless-stopped
 
   runner:
     image: data.forgejo.org/forgejo/runner:12.10.1

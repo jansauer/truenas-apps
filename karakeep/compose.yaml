@@ -35,6 +35,7 @@ services:
           - karakeep
     healthcheck:
       disable: true
+    restart: unless-stopped
     labels:
       - pangolin.proxy-resources.karakeep.name=Karakeep
       - pangolin.proxy-resources.karakeep.full-domain=karakeep.${DOMAIN}
@@ -49,7 +50,6 @@ services:
       - pangolin.proxy-resources.karakeep.rules[0].action=allow
       - pangolin.proxy-resources.karakeep.rules[0].match=path
       - pangolin.proxy-resources.karakeep.rules[0].value=/api/*
-    restart: unless-stopped
 
   chrome:
     image: gcr.io/zenika-hub/alpine-chrome:124

@@ -17,6 +17,9 @@ services:
       newt_default:
         aliases:
           - grimmory
+    healthcheck:
+      disable: true
+    restart: unless-stopped
     labels:
       - pangolin.proxy-resources.grimmory.name=Grimmory
       - pangolin.proxy-resources.grimmory.full-domain=grimmory.${DOMAIN}
@@ -34,7 +37,6 @@ services:
       - pangolin.proxy-resources.grimmory.rules[1].action=allow
       - pangolin.proxy-resources.grimmory.rules[1].match=path
       - pangolin.proxy-resources.grimmory.rules[1].value=/ws
-    restart: unless-stopped
 
   mariadb:
     image: lscr.io/linuxserver/mariadb:11.4.10
