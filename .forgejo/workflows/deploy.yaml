@@ -20,6 +20,8 @@ jobs:
 
       - name: Set up Docker Compose
         uses: https://github.com/docker/setup-compose-action@v2.2.0
+        with:
+          version: v5.1.4
 
       - name: Run make
         env:
