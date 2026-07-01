@@ -19,7 +19,7 @@ jobs:
         uses: https://github.com/1password/install-cli-action@v4.0.0
 
       - name: Set up Docker Compose
-        uses: https://github.com/docker/setup-compose-action@v2.2.0
+        uses: https://github.com/docker/setup-compose-action@v2.3.0
         with:
           version: v5.1.4
 
