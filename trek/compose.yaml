@@ -1,6 +1,6 @@
 services:
   app:
-    image: mauriceboe/trek:3.1.4
+    image: mauriceboe/trek:3.2.0
     environment:
       - ENCRYPTION_KEY=${TREK_ENCRYPTION_KEY}
       - APP_URL=https://trek.${DOMAIN}
