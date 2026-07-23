@@ -16,7 +16,7 @@ jobs:
         uses: https://data.forgejo.org/actions/checkout@v7.0.1
 
       - name: Install 1Password CLI
-        uses: https://github.com/1password/install-cli-action@v4.0.0
+        uses: https://github.com/1password/install-cli-action@v4.1.0
 
       - name: Set up Docker Compose
         uses: https://github.com/docker/setup-compose-action@v2.3.0
