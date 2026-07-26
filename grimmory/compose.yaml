@@ -36,7 +36,13 @@ services:
       - pangolin.proxy-resources.grimmory.rules[0].value=/api/*
       - pangolin.proxy-resources.grimmory.rules[1].action=allow
       - pangolin.proxy-resources.grimmory.rules[1].match=path
-      - pangolin.proxy-resources.grimmory.rules[1].value=/ws
+      - pangolin.proxy-resources.grimmory.rules[1].value=/api/v1/*
+      - pangolin.proxy-resources.grimmory.rules[2].action=allow
+      - pangolin.proxy-resources.grimmory.rules[2].match=path
+      - pangolin.proxy-resources.grimmory.rules[2].value=/ws
+      - pangolin.proxy-resources.grimmory.rules[3].action=allow
+      - pangolin.proxy-resources.grimmory.rules[3].match=path
+      - pangolin.proxy-resources.grimmory.rules[3].value=/assets/pdfium/*
 
   mariadb:
     image: lscr.io/linuxserver/mariadb:11.8.8
