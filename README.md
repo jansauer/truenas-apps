@@ -33,14 +33,5 @@ Cool app's that I self-host on my TrueNAS server.
 $ docker context create truenas \
     --description "TrueNAS" \
     --docker "host=ssh://truenas"
-```
-
-```
-$ cd app
-$ docker context use truenas
-$ docker compose --env-file=../.env --env-file=.env up -d
-```
-
-```
-$ docker ps -a --format 'table {{ .Names }}\t{{ .ID }}\t{{ .Image }}\t{{ .Status }}' | sort
+$ make
 ```
