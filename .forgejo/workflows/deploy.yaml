@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  hello:
+  make:
     runs-on: docker
     container:
       image: cimg/node:26.5.0
