@@ -51,6 +51,53 @@ services:
       - postgres
       - valkey
 
+  gpt:
+    image: icereed/paperless-gpt:v0.27.0
+    environment:
+      # Paperless connection
+      PAPERLESS_BASE_URL: http://webserver:8000
+      PAPERLESS_API_TOKEN: ${PAPERLESS_API_TOKEN}
+      PAPERLESS_PUBLIC_URL: https://paperless.${DOMAIN}
+      # Provider
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      # OCR
+      OCR_PROVIDER: "llm"
+      VISION_LLM_PROVIDER: openai
+      VISION_LLM_MODEL: gpt-4o
+      AUTO_OCR_TAG: gpt-ocr-auto
+      PDF_OCR_COMPLETE_TAG: gpt-ocr
+      FAIL_TAG: gpt-failed
+      OCR_LIMIT_PAGES: 20
+      PDF_REPLACE: "false"
+      # LLM
+      LLM_PROVIDER: openai
+      LLM_MODEL: gpt-4o
+      LLM_LANGUAGE: German
+      # Other
+      LOG_LEVEL: info
+    volumes:
+      - /mnt/applications/paperless-ngx/paperless-gpt/prompts:/app/prompts
+      - /mnt/applications/paperless-ngx/paperless-gpt/config:/app/config
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      default:
+      newt_default:
+        aliases:
+          - paperless-gpt
+    healthcheck:
+      disable: true
+    restart: unless-stopped
+    labels:
+      - pangolin.private-resources.paperless-gpt.name=Paperless GPT
+      - pangolin.private-resources.paperless-gpt.mode=http
+      - pangolin.private-resources.paperless-gpt.destination=paperless-gpt
+      - pangolin.private-resources.paperless-gpt.destination-port=8080
+      - pangolin.private-resources.paperless-gpt.full-domain=paperless-gpt.${DOMAIN}
+      - pangolin.private-resources.paperless-gpt.scheme=http
+      - pangolin.private-resources.paperless-gpt.ssl=true
+    depends_on:
+      - webserver
+
   postgres:
     image: postgres:18.6-alpine3.23
     shm_size: 256mb
