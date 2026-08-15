@@ -14,6 +14,13 @@ services:
       PAPERLESS_SOCIAL_AUTO_SIGNUP: "false"
       PAPERLESS_DISABLE_REGULAR_LOGIN: "true"
       PAPERLESS_REDIRECT_LOGIN_TO_SSO: "true"
+      PAPERLESS_AI_ENABLED: "true"
+      PAPERLESS_AI_LLM_BACKEND: openai-like
+      PAPERLESS_AI_LLM_MODEL: gpt-4o
+      PAPERLESS_AI_LLM_API_KEY: ${OPENAI_API_KEY}
+      PAPERLESS_AI_LLM_OUTPUT_LANGUAGE: de-de
+      PAPERLESS_AI_LLM_EMBEDDING_BACKEND: openai-like
+      PAPERLESS_AI_LLM_EMBEDDING_MODEL: text-embedding-3-small
     volumes:
       - /mnt/applications/paperless-ngx/data:/usr/src/paperless/data
       - /mnt/applications/paperless-ngx/media:/usr/src/paperless/media
