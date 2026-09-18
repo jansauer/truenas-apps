@@ -52,7 +52,7 @@ services:
       - valkey
 
   gpt:
-    image: icereed/paperless-gpt:v0.27.0
+    image: icereed/paperless-gpt:v0.28.0
     environment:
       # Paperless connection
       PAPERLESS_BASE_URL: http://webserver:8000
