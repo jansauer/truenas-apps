@@ -9,7 +9,7 @@ jobs:
   make:
     runs-on: docker
     container:
-      image: cimg/node:26.8.2
+      image: cimg/node:26.9.0
       options: --user root
     steps:
       - name: Check out the repository
