@@ -52,7 +52,7 @@ services:
       - pangolin.proxy-resources.karakeep.rules[0].value=/api/*
 
   chrome:
-    image: gcr.io/zenika-hub/alpine-chrome:124
+    image: ghcr.io/karakeep-app/karakeep-chrome:151.0.7922.47-r1
     command:
       - --no-sandbox
       - --disable-gpu
