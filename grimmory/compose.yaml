@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/grimmory-tools/grimmory:v3.4.1
+    image: ghcr.io/grimmory-tools/grimmory:v3.5.0
     environment:
       - USER_ID=1000
       - GROUP_ID=1000
