@@ -2,6 +2,7 @@
 
 Cool app's that I self-host on my TrueNAS server.
 
+- [AirSane](./airsane)
 - [Audiobookshelf](./audiobookshelf)
 - [CouchDB](./couchdb)
 - [Grimmory](./grimmory)

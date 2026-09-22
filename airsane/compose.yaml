@@ -1,0 +1,15 @@
+services:
+  airsane:
+    image: airsane-local:0.4.12.2
+    build:
+      context: .
+      args:
+        AIRSANE_TAG: v0.4.12
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - /run/dbus:/run/dbus
+      - /etc/localtime:/etc/localtime:ro
+    device_cgroup_rules:
+      - "c 189:* rmw"
+    network_mode: host
+    restart: unless-stopped
