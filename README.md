@@ -12,7 +12,6 @@ Cool app's that I self-host on my TrueNAS server.
 - [Overpass](./overpass)
 - [Paperless-ngx](./paperless-ngx)
 - [Plex](./plex)
-- [Trek](./trek)
 
 ## Things I tried but no longer use
 
@@ -27,6 +26,7 @@ Cool app's that I self-host on my TrueNAS server.
 - [Norish](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/de7a9039caa17d0423edae57f99263709e74f2cf/norish/)
 - [HabitSync](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/de7a9039caa17d0423edae57f99263709e74f2cf/habitsync)
 - [Open WebUI](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/0929f572029ef40db00f45e3d72eff97f7607a48/openwebui)
+- [Trek](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/1ec3f28ee8a856a83cf59e26c17144f84267df55/trek)
 
 ## Quickstart 
 
