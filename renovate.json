@@ -2,6 +2,15 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":label(renovate)", ":pinVersions"],
   "additionalBranchPrefix": "{{parentDir}}-",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^airsane\\/Dockerfile$/"],
+      "matchStrings": ["ARG AIRSANE_TAG=(?<currentValue>\\S+)"],
+      "depNameTemplate": "SimulPiscator/AirSane",
+      "datasourceTemplate": "github-tags"
+    }
+  ],
   "packageRules": [
     {
       "groupName": "ghcr.io/immich-app",
