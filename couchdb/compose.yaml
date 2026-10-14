@@ -1,6 +1,6 @@
 services:
   app:
-    image: couchdb:3.5.2
+    image: couchdb:3.5.3
     environment:
       COUCHDB_USER: ${COUCHDB_USER}
       COUCHDB_PASSWORD: ${COUCHDB_PASSWORD}
