@@ -1,6 +1,6 @@
 services:
   server:
-    image: ghcr.io/immich-app/immich-server:v3.3.3
+    image: ghcr.io/immich-app/immich-server:v3.3.5
     environment:
       DB_HOSTNAME: postgres
       DB_USERNAME: postgres
