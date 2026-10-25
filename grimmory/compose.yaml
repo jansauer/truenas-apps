@@ -45,7 +45,7 @@ services:
       - pangolin.proxy-resources.grimmory.rules[3].value=/assets/pdfium/*
 
   mariadb:
-    image: lscr.io/linuxserver/mariadb:11.8.8
+    image: lscr.io/linuxserver/mariadb:11.8.9
     environment:
       - PUID=1000
       - PGID=1000
