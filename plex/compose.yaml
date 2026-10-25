@@ -7,7 +7,7 @@ services:
       - VERSION=docker
     volumes:
       - /mnt/applications/plex:/config
-      - /mnt/space/media:/media:ro
+      - /mnt/space/media:/media:rw
       - /etc/localtime:/etc/localtime:ro
     devices:
       - /dev/dri:/dev/dri
