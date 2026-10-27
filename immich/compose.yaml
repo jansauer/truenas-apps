@@ -62,7 +62,7 @@ services:
     restart: unless-stopped
 
   valkey:
-    image: valkey/valkey:9.1.2-alpine
+    image: valkey/valkey:9.1.3-alpine
     volumes:
       - /mnt/applications/immich/valkey:/data
     restart: unless-stopped
