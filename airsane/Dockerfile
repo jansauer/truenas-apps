@@ -3,7 +3,7 @@ ARG BASE_IMAGE=library/debian:stable-slim
 FROM docker.io/${BASE_IMAGE} AS builder
 
 ARG AIRSANE_REPO=https://github.com/SimulPiscator/AirSane
-ARG AIRSANE_TAG=v0.4.15
+ARG AIRSANE_TAG=v0.4.16
 
 WORKDIR /opt/AirSane
 
