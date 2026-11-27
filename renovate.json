@@ -9,6 +9,10 @@
   "additionalBranchPrefix": "{{parentDir}}-",
   "packageRules": [
     {
+      "matchPackageNames": ["docker/compose"],
+      "minimumReleaseAge": "7 days"
+    },
+    {
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     },
