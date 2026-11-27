@@ -9,17 +9,17 @@ jobs:
   make:
     runs-on: docker
     container:
-      image: cimg/node:26.13.1
+      image: cimg/node:26.13.1@sha256:a39bdc3768d19a96b3b8bbf7a31f50cea3b76e81c3071d0112c2186b4d6e4d1c
       options: --user root
     steps:
       - name: Check out the repository
-        uses: https://data.forgejo.org/actions/checkout@v7.0.1
+        uses: https://data.forgejo.org/actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install 1Password CLI
-        uses: https://github.com/1password/install-cli-action@v4.1.0
+        uses: https://github.com/1password/install-cli-action@1a3160d5e9de1ae0803eaa08a88746f5ae3daa50 # v4.1.0
 
       - name: Set up Docker Compose
-        uses: https://github.com/docker/setup-compose-action@v2.4.0
+        uses: https://github.com/docker/setup-compose-action@54042514f505b273907334ae2b9cdbb9a0213c1a # v2.4.0
         with:
           version: v5.8.0
 
