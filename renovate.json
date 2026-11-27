@@ -13,6 +13,15 @@
   ],
   "packageRules": [
     {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["data.forgejo.org/forgejo/runner"],
+      "automerge": false
+    },
+    {
       "groupName": "ghcr.io/immich-app",
       "matchPackageNames": [
         "ghcr.io/immich-app/immich-server",
