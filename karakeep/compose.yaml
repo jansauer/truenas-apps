@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/karakeep-app/karakeep:0.35.0
+    image: ghcr.io/karakeep-app/karakeep:0.35.0@sha256:6f7d32ef296ddf1fc7c67ff56b8a201b7006a6a47b92b202afee1338841b353d
     environment:
       DATA_DIR: /data
       NEXTAUTH_URL: "https://karakeep.${DOMAIN}"
@@ -52,7 +52,7 @@ services:
       - pangolin.proxy-resources.karakeep.rules[0].value=/api/*
 
   chrome:
-    image: ghcr.io/karakeep-app/karakeep-chrome:158.0.8127.88-r1
+    image: ghcr.io/karakeep-app/karakeep-chrome:158.0.8127.88-r1@sha256:4f23c2630fbcea09c4a8a5272490855f2dd25686017ab379fbec78615782782d
     init: true
     command:
       - --disable-gpu
@@ -63,7 +63,7 @@ services:
     restart: unless-stopped
 
   meilisearch:
-    image: getmeili/meilisearch:v1.58.0
+    image: getmeili/meilisearch:v1.58.0@sha256:cee0d2e31191594ff8e1651eb144aabd95b389a0bc3532327ecfb9ed91dffe7e
     environment:
       MEILI_MASTER_KEY: ${KARAKEEP_MEILI_MASTER_KEY}
       MEILI_NO_ANALYTICS: "true"
