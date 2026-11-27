@@ -9,13 +9,13 @@ jobs:
   prek:
     runs-on: docker
     container:
-      image: cimg/node:26.13.1
+      image: cimg/node:26.13.1@sha256:a39bdc3768d19a96b3b8bbf7a31f50cea3b76e81c3071d0112c2186b4d6e4d1c
       options: --user root
     steps:
       - name: Check out the pull request
-        uses: https://data.forgejo.org/actions/checkout@v7.0.1
+        uses: https://data.forgejo.org/actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Run prek
-        uses: https://github.com/j178/prek-action@v3.1.1
+        uses: https://github.com/j178/prek-action@7b101f8338a08d2bd6fdb3625e4e7692428763a3 # v3.1.1
         with:
           prek-version: latest-known
