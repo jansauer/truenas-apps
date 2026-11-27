@@ -8,4 +8,4 @@ A media server that lets me organize, stream, and enjoy my media across multiple
 ## Notes
 
 1. Using docker network with Traefik or just docker ports did not work and the
-   Apple TV client complains about not having enough bandwidth for 4K playback. 
+   Apple TV client complains about not having enough bandwidth for 4K playback.

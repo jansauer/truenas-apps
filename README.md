@@ -28,7 +28,7 @@ Cool app's that I self-host on my TrueNAS server.
 - [Open WebUI](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/0929f572029ef40db00f45e3d72eff97f7607a48/openwebui)
 - [Trek](https://forgejo.jansauer.dev/jansauer/truenas-apps/src/commit/1ec3f28ee8a856a83cf59e26c17144f84267df55/trek)
 
-## Quickstart 
+## Quickstart
 
 ```
 $ docker context create truenas \

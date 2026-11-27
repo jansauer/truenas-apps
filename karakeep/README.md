@@ -24,7 +24,7 @@ Create a dump
 After starting the new version
 % docker exec -it karakeep-meilisearch-1 sh
 # rm -rf data.ms
-# meilisearch --master-key="API_KEY" --import-dump dumps/XXX.dump 
+# meilisearch --master-key="API_KEY" --import-dump dumps/XXX.dump
 # rm -rf dumps old_data.ms
 % docker restart karakeep-meilisearch-1
 ```
