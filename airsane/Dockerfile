@@ -3,7 +3,8 @@ ARG BASE_IMAGE=library/debian:stable-slim
 FROM docker.io/${BASE_IMAGE} AS builder
 
 ARG AIRSANE_REPO=https://github.com/SimulPiscator/AirSane
-ARG AIRSANE_TAG=v0.4.16
+# renovate: datasource=github-tags depName=SimulPiscator/AirSane
+ARG AIRSANE_VERSION=v0.4.12
 
 WORKDIR /opt/AirSane
 
@@ -18,7 +19,7 @@ RUN <<-EOT sh
 		-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
 	apt-get clean && rm -rf /var/lib/apt/lists/* /var/lib/apt/lists/*
 
-	wget ${AIRSANE_REPO}/archive/refs/tags/${AIRSANE_TAG}.tar.gz -O - \
+	wget ${AIRSANE_REPO}/archive/refs/tags/${AIRSANE_VERSION}.tar.gz -O - \
 		| tar -xzv --strip-components=1
 	mkdir ./build && cd ./build && cmake .. && make
 EOT

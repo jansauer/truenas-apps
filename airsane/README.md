@@ -8,7 +8,7 @@ Share a USB Fujitsu ScanSnap iX500 as an AirScan/eSCL network scanner.
 
 The scanner is connected to the TrueNAS server over USB and shared on the LAN with host networking so Bonjour discovery works from macOS Image Capture, Preview, and other AirScan-compatible clients.
 
-The image is built locally from the `aguslr/docker-airsane` Dockerfile using AirSane v0.4.12. The published `aguslr/airsane` image currently contains AirSane v0.4.5, which predates improvements to duplex ADF handling and advertisement.
+The image is built locally from a Dockerfile based on `aguslr/docker-airsane`. Renovate tracks the AirSane release in the Dockerfile's `AIRSANE_VERSION` argument. The published `aguslr/airsane` image currently contains AirSane v0.4.5, which predates improvements to duplex ADF handling and advertisement.
 
 The image includes an AirSane device configuration that sets the iX500 media size to A4 (210 x 297 mm). The SANE Fujitsu backend otherwise defaults to US Letter dimensions (215.872 x 279.364 mm). The Letter height causes macOS to omit A4 from the paper-size menu, while its wider media width can include the feeder background beside a centered A4 page. The `swcrop` backend option is also enabled so `sane-fujitsu` detects the sheet edges and digitally removes any remaining border. Baking the configuration into the image allows it to work with the remote TrueNAS Docker context without a host bind mount.
 

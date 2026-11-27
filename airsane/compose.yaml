@@ -1,10 +1,9 @@
 services:
   airsane:
-    image: airsane-local:0.4.12.2
+    image: airsane-local:local
+    pull_policy: build
     build:
       context: .
-      args:
-        AIRSANE_TAG: v0.4.12
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - /run/dbus:/run/dbus
