@@ -103,14 +103,14 @@ services:
       - webserver
 
   postgres:
-    image: postgres:18.7-alpine3.23
+    image: postgres:19.0-alpine3.23
     shm_size: 256mb
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
       POSTGRES_PASSWORD: paperless
     volumes:
-      - /mnt/applications/paperless-ngx/postgres:/var/lib/postgresql/18/docker
+      - /mnt/applications/paperless-ngx/postgres-19:/var/lib/postgresql
     restart: unless-stopped
 
   valkey:
