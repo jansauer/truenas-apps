@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=library/debian:stable-slim
+ARG BASE_IMAGE=library/debian:stable-slim@sha256:a64d9dbf633e2a2503afac76be521dc25d9b5765150b30d31a3914d4ae969cab
 
 FROM docker.io/${BASE_IMAGE} AS builder
 
