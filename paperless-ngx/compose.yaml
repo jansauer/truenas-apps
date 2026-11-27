@@ -1,6 +1,6 @@
 services:
   webserver:
-    image: ghcr.io/paperless-ngx/paperless-ngx:3.5.1
+    image: ghcr.io/paperless-ngx/paperless-ngx:3.5.1@sha256:8508853b8a0f8394074260957d0be186c8c64f346973b24a7583de4580f306b9
     environment:
       PAPERLESS_REDIS: redis://valkey:6379
       PAPERLESS_DBHOST: postgres
@@ -52,7 +52,7 @@ services:
       - valkey
 
   gpt:
-    image: icereed/paperless-gpt:v0.31.0
+    image: icereed/paperless-gpt:v0.31.0@sha256:d668941a829552cc0eddbc7c22506b3480dfbf61bd0d6eae881ad9fcfe2de70c
     environment:
       # Paperless connection
       PAPERLESS_BASE_URL: http://webserver:8000
@@ -103,7 +103,7 @@ services:
       - webserver
 
   postgres:
-    image: postgres:19.0-alpine3.23
+    image: postgres:19.0-alpine3.23@sha256:40ad7e457013448b5522c6c5d30dccb8248959c41adc0e56c1785be4293bbd67
     shm_size: 256mb
     environment:
       POSTGRES_DB: paperless
@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   valkey:
-    image: valkey/valkey:9.2.0-alpine
+    image: valkey/valkey:9.2.0-alpine@sha256:c8e2d17498838af5d91e12eb7c11220b3434a7b7131a333e3af52ad5e0b80882
     volumes:
       - /mnt/applications/paperless-ngx/valkey:/data
     restart: unless-stopped
