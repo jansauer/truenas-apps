@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/grimmory-tools/grimmory:v3.5.1
+    image: ghcr.io/grimmory-tools/grimmory:v3.5.1@sha256:678d8e8af92f3587d4cfae28ffbe44854105ea56fed6b9590fc56b454f512585
     environment:
       - USER_ID=1000
       - GROUP_ID=1000
@@ -45,7 +45,7 @@ services:
       - pangolin.proxy-resources.grimmory.rules[3].value=/assets/pdfium/*
 
   mariadb:
-    image: lscr.io/linuxserver/mariadb:11.8.10
+    image: lscr.io/linuxserver/mariadb:11.8.10@sha256:080593de5277bcd9264e0b4e374657a019fdf77e2688996d05269548e0cef3bd
     environment:
       - PUID=1000
       - PGID=1000
