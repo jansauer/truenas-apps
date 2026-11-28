@@ -1,6 +1,6 @@
 services:
   plex:
-    image: linuxserver/plex:1.43.5
+    image: linuxserver/plex:1.43.5@sha256:31e4c2de666cd130bc389133b6c63af08912559d992370e52822f8f229185aef
     environment:
       - PUID=1000
       - PGID=1000
