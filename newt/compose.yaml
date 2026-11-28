@@ -1,6 +1,6 @@
 services:
   newt:
-    image: ghcr.io/fosrl/newt:1.20.1
+    image: ghcr.io/fosrl/newt:1.20.1@sha256:03561e3f3d10b94ee7839318ae46e5acf8b4431550ea1d0e15666ab60caa2e43
     environment:
       - PANGOLIN_ENDPOINT=${NEWT_PANGOLIN_ENDPOINT}
       - NEWT_ID=${NEWT_ID}
