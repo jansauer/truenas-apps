@@ -4,7 +4,7 @@ FROM docker.io/${BASE_IMAGE} AS builder
 
 ARG AIRSANE_REPO=https://github.com/SimulPiscator/AirSane
 # renovate: datasource=github-tags depName=SimulPiscator/AirSane
-ARG AIRSANE_VERSION=v0.4.12
+ARG AIRSANE_VERSION=v0.4.16
 
 WORKDIR /opt/AirSane
 
